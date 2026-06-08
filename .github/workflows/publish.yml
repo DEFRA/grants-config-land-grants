@@ -37,6 +37,21 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v6
 
+      - name: Test code and Create Test Coverage Reports
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: |
+          npm ci
+          npm test
+
+      - name: Build and Publish
+        if: ${{ startsWith(github.event_name == 'push' && github.event.head_commit.message || inputs.commit_message, 'Create new config version') }}
+        uses: DEFRA/cdp-build-action/build@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set user
         if: ${{ !startsWith(github.event_name == 'push' && github.event.head_commit.message || inputs.commit_message, 'Create new config version') }}
         run: git config user.name github-actions[bot] && git config user.email github-actions[bot]@users.noreply.github.com
@@ -146,21 +161,6 @@ jobs:
               repo: context.repo.repo,
               ref: `heads/${releasePR.head.ref}`
             });
-
-      - name: Test code and Create Test Coverage Reports
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-      - run: |
-          npm ci
-          npm test
-
-      - name: Build and Publish
-        if: ${{ startsWith(github.event_name == 'push' && github.event.head_commit.message || inputs.commit_message, 'Create new config version') }}
-        uses: DEFRA/cdp-build-action/build@main
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: SonarCloud Scan
 #        uses: SonarSource/sonarqube-scan-action@v5.3.1 #  (or check latest version on https://github.com/marketplace/actions/official-sonarqube-scan)
