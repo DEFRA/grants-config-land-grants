@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.2.0
+
+### Minor Changes
+
+- 496fa29: remove temp change
+
 ## 0.1.1
 
 ### Patch Changes
