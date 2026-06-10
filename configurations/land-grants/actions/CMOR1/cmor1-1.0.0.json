@@ -1,0 +1,40 @@
+{
+  "code": "CMOR1",
+  "description": "Assess moorland and produce a written record",
+  "payment": {
+    "ratePerUnitGbp": 10.6,
+    "ratePerAgreementPerYearGbp": 272
+  },
+  "rules": [
+    {
+      "name": "parcel-has-intersection-with-data-layer",
+      "config": {
+        "layerName": "moorland",
+        "tolerancePercent": 1,
+        "minimumIntersectionPercent": 50
+      },
+      "version": "1.0.0",
+      "description": "Is this parcel on the moorland?"
+    },
+    {
+      "name": "applied-for-total-available-area",
+      "version": "1.0.0",
+      "description": "Has the total available area been applied for?"
+    }
+  ],
+  "applicationUnitOfMeasurement": "ha",
+  "durationYears": 1,
+  "startDate": "2025-01-01",
+  "semanticVersion": "1.0.0",
+  "displayOrder": 1,
+  "paymentMethod": {
+    "name": "default-calculation",
+    "config": {
+      "ratePerUnitGbp": 10.6,
+      "ratePerAgreementPerYearGbp": 272
+    }
+  },
+  "enabled": true,
+  "display": true,
+  "groupId": 1
+}

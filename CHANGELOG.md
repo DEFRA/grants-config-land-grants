@@ -2,18 +2,32 @@
 
 ## 0.2.0
 
-### Minor Changes
-
-- 496fa29: remove temp change
+## Below is copied in from the old config repo, see: https://github.com/DEFRA/land-grants-config
 
 ## 0.1.1
 
 ### Patch Changes
 
-- 599cf64: temp change to test grant config works
+- f1c49da: add SSSI and HF properties
 
 ## 0.1.0
 
 ### Minor Changes
 
-- 178c052: Add grant configuration support to the repository
+- 2db2aa1: Change the duration of PA3 from 10 to 3 years
+
+### Patch Changes
+
+- 855c9cd: add land-grants-api action codes
+
+## 0.0.2
+
+### Patch Changes
+
+- 2383948: GSPS-353: remove redundant/legacy fields
+
+## 0.0.1
+
+### Patch Changes
+
+- c688d98: Setup repository
