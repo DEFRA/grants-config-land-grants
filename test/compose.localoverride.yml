@@ -1,0 +1,11 @@
+services:
+  land-grants-backend-postgres:
+    image: defradigital/land-grants-postgres-seeded:latest
+
+  land-grants-backend:
+    environment:
+      LAND_GRANTS_AUTH_TOKEN: land-grants-config-test-token
+      LAND_GRANTS_ENCRYPTION_KEY: land-grants-config-test-encryption-key-1234567890
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_REGION: eu-west-2
