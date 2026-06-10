@@ -1,38 +1,38 @@
 {
-    "code": "UPL1",
-    "description": "Moderate livestock grazing on moorland",
-    "payment": {
-        "ratePerUnitGbp": 20
+  "code": "UPL1",
+  "description": "Moderate livestock grazing on moorland",
+  "payment": {
+    "ratePerUnitGbp": 20
+  },
+  "rules": [
+    {
+      "name": "parcel-has-intersection-with-data-layer",
+      "config": {
+        "layerName": "moorland",
+        "tolerancePercent": 1,
+        "minimumIntersectionPercent": 50
+      },
+      "version": "1.0.0",
+      "description": "Is this parcel on the moorland?"
     },
-    "rules": [
-        {
-            "name": "parcel-has-intersection-with-data-layer",
-            "config": {
-                "layerName": "moorland",
-                "tolerancePercent": 1,
-                "minimumIntersectionPercent": 50
-            },
-            "version": "1.0.0",
-            "description": "Is this parcel on the moorland?"
-        },
-        {
-            "name": "applied-for-total-available-area",
-            "version": "1.0.0",
-            "description": "Has the total available area been applied for?"
-        }
-    ],
-    "applicationUnitOfMeasurement": "ha",
-    "durationYears": 1,
-    "startDate": "2025-01-01",
-    "semanticVersion": "1.1.0",
-    "displayOrder": 2,
-    "paymentMethod": {
-        "name": "default-calculation",
-        "config": {
-            "ratePerUnitGbp": 20
-        }
-    },
-    "enabled": true,
-    "display": true,
-    "groupId": 2
+    {
+      "name": "applied-for-total-available-area",
+      "version": "1.0.0",
+      "description": "Has the total available area been applied for?"
+    }
+  ],
+  "applicationUnitOfMeasurement": "ha",
+  "durationYears": 1,
+  "startDate": "2025-01-01",
+  "semanticVersion": "1.1.0",
+  "displayOrder": 2,
+  "paymentMethod": {
+    "name": "default-calculation",
+    "config": {
+      "ratePerUnitGbp": 20
+    }
+  },
+  "enabled": true,
+  "display": true,
+  "groupId": 2
 }
