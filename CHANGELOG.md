@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.2.1
+
+### Patch Changes
+
+- 0e50c01: feat(GRAN-8): import configuration from old config repo
+
 ## 0.2.0
 
 ## Below is copied in from the old config repo, see: https://github.com/DEFRA/land-grants-config
