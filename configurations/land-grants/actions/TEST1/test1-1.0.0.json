@@ -1,0 +1,53 @@
+{
+  "code": "TEST1",
+  "description": "Test action1",
+  "enabled": false,
+  "display": false,
+  "payment": null,
+  "rules": [
+    {
+      "name": "parcel-has-minimum-eligibility-for-woodland-management-plan",
+      "config": {
+        "minimumSize": 0.5,
+        "minOldWoodlandHa": 0.4
+      },
+      "description": "Is the parcel eligible for the woodland management plan action?"
+    },
+    {
+      "name": "total-area-not-exceed-land-parcels-woodland-management-plan",
+      "description": "Is the total woodland area less than or equal to the total land parcel area?"
+    }
+  ],
+  "applicationUnitOfMeasurement": "ha",
+  "durationYears": 10,
+  "startDate": "2025-01-01",
+  "semanticVersion": "1.0.0",
+  "displayOrder": 0,
+  "paymentMethod": {
+    "name": "wmp-calculation",
+    "config": {
+      "tiers": [
+        {
+          "flatRateGbp": 1500,
+          "lowerLimitHa": 0.5,
+          "upperLimitHa": 50,
+          "ratePerUnitGbp": 0
+        },
+        {
+          "flatRateGbp": 1500,
+          "lowerLimitHa": 50,
+          "upperLimitHa": 100,
+          "ratePerUnitGbp": 30
+        },
+        {
+          "flatRateGbp": 3000,
+          "lowerLimitHa": 100,
+          "upperLimitHa": null,
+          "ratePerUnitGbp": 15
+        }
+      ],
+      "newWoodlandMaxPercent": 20
+    }
+  },
+  "groupId": null
+}
