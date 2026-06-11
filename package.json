@@ -1,6 +1,6 @@
 {
   "name": "grants-config-land-grants",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "grants-config-land-grants",
   "main": "src/index.js",
   "type": "module",
