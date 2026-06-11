@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.2.2
+
+### Patch Changes
+
+- 405c604: remove test actions
+
 ## 0.2.1
 
 ### Patch Changes
