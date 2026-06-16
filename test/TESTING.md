@@ -38,12 +38,12 @@ The handler accepts both SNS-wrapped and raw envelopes; tests use the raw form.
 
 The Docker compose stack used for tests is `land-grants-api/compose.yml` (referenced via git remote) plus `test/compose.localoverride.yml`:
 
-| Service                          | Source                                       | Notes                                                                          |
-| -------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------ |
-| `land-grants-backend-postgres`   | local override → `defradigital/land-grants-postgres-seeded:latest` | Published seeded image — pre-seeded land data (parcels, covers, SSSI etc); pulled from Docker Hub on first run |
-| `land-grants-backend`            | upstream                                     | API on `localhost:3001`; receives `LAND_GRANTS_AUTH_TOKEN` / `LAND_GRANTS_ENCRYPTION_KEY` from the override |
-| `floci`                          | upstream                                     | LocalStack-equivalent on `localhost:4566`                                      |
-| `floci-init`                     | upstream                                     | Creates `configs-bucket`, SQS queue `grants_config_broker_update`, SNS topic   |
+| Service                        | Source                                                             | Notes                                                                                                          |
+| ------------------------------ | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+| `land-grants-backend-postgres` | local override → `defradigital/land-grants-postgres-seeded:latest` | Published seeded image — pre-seeded land data (parcels, covers, SSSI etc); pulled from Docker Hub on first run |
+| `land-grants-backend`          | upstream                                                           | API on `localhost:3001`; receives `LAND_GRANTS_AUTH_TOKEN` / `LAND_GRANTS_ENCRYPTION_KEY` from the override    |
+| `floci`                        | upstream                                                           | LocalStack-equivalent on `localhost:4566`                                                                      |
+| `floci-init`                   | upstream                                                           | Creates `configs-bucket`, SQS queue `grants_config_broker_update`, SNS topic                                   |
 
 The seeded image avoids the long migration + land-data ingest step on every CI run. The API's own migration profile is not used here — the seeded image already has schema applied. Docker pulls `defradigital/land-grants-postgres-seeded:latest` from Docker Hub on first use and caches it locally.
 
@@ -120,7 +120,7 @@ docker pull defradigital/land-grants-postgres-seeded:latest
 3. Update `CODE`, `VERSION`, and any expected values that change with this version (rate, rule outcomes, etc.).
 4. Run `npm run test:configs` to confirm it passes.
 
-If the new version changes the *kind* of behaviour exercised (e.g. introduces a new rule), add a fresh `it(...)` block. Existing specs for older versions should stay untouched — they prove backward compatibility.
+If the new version changes the _kind_ of behaviour exercised (e.g. introduces a new rule), add a fresh `it(...)` block. Existing specs for older versions should stay untouched — they prove backward compatibility.
 
 ## Debugging a failure
 

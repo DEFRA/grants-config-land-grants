@@ -9,6 +9,9 @@ describe('#fail-action', () => {
     expect(() => failAction(mockRequest, mockToolkit, mockError)).toThrow(
       'Something terrible has happened!'
     )
-    expect(mockRequest.logger.warn).toHaveBeenCalledWith(mockError, mockError.message)
+    expect(mockRequest.logger.warn).toHaveBeenCalledWith(
+      mockError,
+      mockError.message
+    )
   })
 })

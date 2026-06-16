@@ -13,7 +13,10 @@ import {
 } from './env.js'
 import { waitForActionConfig } from './wait-for.js'
 
-const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
+const REPO_ROOT = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../..'
+)
 
 const awsClientConfig = {
   endpoint: AWS_ENDPOINT,
@@ -30,7 +33,14 @@ const sqs = new SQSClient(awsClientConfig)
 
 export async function publishConfig({ code, semanticVersion }) {
   const fileName = `${code.toLowerCase()}-${semanticVersion}.json`
-  const localPath = path.join(REPO_ROOT, 'configurations', 'land-grants', 'actions', code, fileName)
+  const localPath = path.join(
+    REPO_ROOT,
+    'configurations',
+    'land-grants',
+    'actions',
+    code,
+    fileName
+  )
   const body = await readFile(localPath, 'utf8')
 
   const key = `land-grants/test/actions/${code}/${fileName}`

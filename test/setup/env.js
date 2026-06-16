@@ -10,7 +10,8 @@ export const CONFIG_QUEUE_URL = `${AWS_ENDPOINT}/000000000000/grants_config_brok
 
 // Must match compose.localoverride.yml
 export const AUTH_TOKEN = 'land-grants-config-test-token'
-export const ENCRYPTION_KEY = 'land-grants-config-test-encryption-key-1234567890'
+export const ENCRYPTION_KEY =
+  'land-grants-config-test-encryption-key-1234567890'
 
 export const POSTGRES = {
   host: process.env.POSTGRES_HOST ?? 'localhost',

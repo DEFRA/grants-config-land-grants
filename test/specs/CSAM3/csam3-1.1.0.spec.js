@@ -26,7 +26,11 @@ describe(`${CODE} @ ${VERSION}`, () => {
     expect(response.status).toBe(200)
     expect(Object.values(response.body.payment.parcelItems)).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ code: CODE, version: VERSION, annualPaymentPence: RATE_PENCE_PER_HA })
+        expect.objectContaining({
+          code: CODE,
+          version: VERSION,
+          annualPaymentPence: RATE_PENCE_PER_HA
+        })
       ])
     )
   })

@@ -23,7 +23,11 @@ describe(`${CODE} @ ${VERSION}`, () => {
     expect(response.status).toBe(200)
     expect(Object.values(response.body.payment.parcelItems)).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ code: CODE, version: VERSION, annualPaymentPence: RATE_PER_HA_PENCE })
+        expect.objectContaining({
+          code: CODE,
+          version: VERSION,
+          annualPaymentPence: RATE_PER_HA_PENCE
+        })
       ])
     )
   })
@@ -37,7 +41,11 @@ describe(`${CODE} @ ${VERSION}`, () => {
     expect(response.status).toBe(200)
     expect(Object.values(response.body.payment.agreementLevelItems)).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ code: CODE, version: VERSION, annualPaymentPence: AGREEMENT_RATE_PENCE })
+        expect.objectContaining({
+          code: CODE,
+          version: VERSION,
+          annualPaymentPence: AGREEMENT_RATE_PENCE
+        })
       ])
     )
   })

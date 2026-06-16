@@ -26,7 +26,9 @@ for await (const file of glob('configurations/**/*.json')) {
 }
 
 if (errors > 0) {
-  console.error(`\n${errors} rate inconsistency(ies) found. Update both locations or consolidate.`)
+  console.error(
+    `\n${errors} rate inconsistency(ies) found. Update both locations or consolidate.`
+  )
   process.exit(1)
 }
 
