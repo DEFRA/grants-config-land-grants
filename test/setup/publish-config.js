@@ -13,7 +13,7 @@ import {
 } from './env.js'
 import { waitForActionConfig } from './wait-for.js'
 
-const REPO_ROOT = path.resolve(fileURLToPath(import.meta.url), '../../..')
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 
 const awsClientConfig = {
   endpoint: AWS_ENDPOINT,
