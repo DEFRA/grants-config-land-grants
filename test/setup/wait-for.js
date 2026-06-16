@@ -3,7 +3,12 @@ import { POSTGRES } from './env.js'
 
 const { Client } = pg
 
-export async function waitForActionConfig({ code, semanticVersion, timeoutMs = 30000, intervalMs = 500 }) {
+export async function waitForActionConfig({
+  code,
+  semanticVersion,
+  timeoutMs = 30000,
+  intervalMs = 500
+}) {
   const deadline = Date.now() + timeoutMs
   const [major, minor, patch] = semanticVersion.split('.').map(Number)
   const client = new Client(POSTGRES)
@@ -17,11 +22,13 @@ export async function waitForActionConfig({ code, semanticVersion, timeoutMs = 3
         [code, major, minor, patch]
       )
       if (rows.length > 0) return
-      await new Promise((r) => setTimeout(r, intervalMs))
+      await new Promise((resolve) => setTimeout(resolve, intervalMs))
     }
   } finally {
     await client.end().catch(() => {})
   }
 
-  throw new Error(`Timed out waiting for actions_config row code=${code} version=${semanticVersion}`)
+  throw new Error(
+    `Timed out waiting for actions_config row code=${code} version=${semanticVersion}`
+  )
 }
