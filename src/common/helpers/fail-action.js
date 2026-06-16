@@ -1,8 +1,4 @@
-import { createLogger } from './logging/logger.js'
-
-const logger = createLogger()
-
-export function failAction(_request, _h, error) {
-  logger.warn(error, error?.message)
+export function failAction(request, _h, error) {
+  request.logger.warn(error, error?.message)
   throw error
 }
