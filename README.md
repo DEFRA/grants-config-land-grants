@@ -141,11 +141,29 @@ npm run dev
 
 ### Testing
 
-To test the application run:
+#### Unit tests
+
+To run the unit tests:
 
 ```bash
 npm run test
 ```
+
+#### Config regression tests
+
+Every published version of every action JSON has a co-located test in `test/specs/<CODE>/<code>-<version>.spec.js`. Each spec publishes its config to a Dockerised `land-grants-api` instance through the real S3 + SQS broker path, then asserts on the REST response.
+
+**Quick start** — runs the full stack and the whole suite:
+
+```bash
+npm run test:smoke
+```
+
+The first run pulls the published seeded Postgres image (`defradigital/land-grants-postgres-seeded:latest`) from Docker Hub; subsequent runs reuse the cached image. Set `LAND_GRANTS_API_DIR=/path/to/land-grants-api` if you want to point the stack at a local `land-grants-api` checkout instead of the upstream `compose.yml`.
+
+When you add a new config version under `configurations/land-grants/actions/<CODE>/`, add a sibling spec next to the existing ones for that action. Existing specs stay in place as the regression suite — they prove old configs still behave as their applications expect.
+
+See [`test/TESTING.md`](./test/TESTING.md) for the full approach: why it's wired this way, how the SQS broker path works locally, authentication, debugging, and CI.
 
 ### Production
 

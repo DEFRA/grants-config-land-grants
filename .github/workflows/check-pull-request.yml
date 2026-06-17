@@ -32,6 +32,7 @@ jobs:
           npm ci
           npm run format:check
           npm run lint
+          npm run validate:configs
           npm test
 
       - name: Test Docker Image Build
@@ -39,6 +40,9 @@ jobs:
           set +e
           docker build --no-cache --tag cdp-node-backend-template .
           exit $?
+
+      - name: Run smoke tests
+        run: CI=true npm run test:smoke
 
 #      - name: SonarCloud Scan
 #        if: github.actor != 'dependabot[bot]'

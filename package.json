@@ -19,10 +19,14 @@
     "security-audit": "npm audit --audit-level=critical",
     "server:debug": "node --watch --inspect-brk=0.0.0.0 --env-file-if-exists=.env ./src",
     "server:watch": "node --watch --inspect=0.0.0.0 --env-file-if-exists=.env ./src",
+    "setup": "touch .env",
     "setup:husky": "node -e \"try { (await import('husky')).default() } catch (e) { if (e.code !== 'ERR_MODULE_NOT_FOUND') throw e }\" --input-type module",
+    "validate:configs": "node scripts/validate-configs.js",
     "start": "NODE_ENV=production node . --env-file-if-exists=.env",
     "test": "TZ=UTC vitest run --coverage",
     "test:watch": "TZ=UTC vitest",
+    "test:configs": "vitest run --config test/vitest.config.js",
+    "test:smoke": "./test/run-all-tests.sh",
     "github:release": "npx cdp-github-release grants-config-land-grants",
     "version:changed": "changeset version",
     "version": "changeset"
@@ -33,7 +37,7 @@
   "author": "Defra DDTS",
   "license": "OGL-UK-3.0",
   "dependencies": {
-    "@defra/cdp-auditing": "0.6.0",
+    "@defra/cdp-auditing": "0.6.1",
     "@defra/cdp-metrics": "0.6.0",
     "@defra/grants-config-utils": "0.3.0",
     "@defra/hapi-secure-context": "0.4.0",
@@ -46,7 +50,7 @@
     "convict-format-with-validator": "6.2.0",
     "global-agent": "3.0.0",
     "hapi-pino": "13.0.0",
-    "hapi-pulse": "3.0.1",
+    "hapi-pulse": "3.0.0",
     "https-proxy-agent": "7.0.6",
     "joi": "18.1.2",
     "pino": "10.3.1",
@@ -54,6 +58,8 @@
     "undici": "7.24.8"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.700.0",
+    "@aws-sdk/client-sqs": "^3.700.0",
     "@changesets/changelog-github": "0.7.0",
     "@changesets/cli": "2.31.0",
     "@vitest/coverage-v8": "4.1.4",
@@ -61,7 +67,9 @@
     "husky": "9.1.7",
     "neostandard": "0.13.0",
     "npm-run-all": "4.1.5",
+    "pg": "^8.13.0",
     "prettier": "3.8.2",
+    "supertest": "^7.0.0",
     "vitest": "4.1.4",
     "vitest-fetch-mock": "0.4.5"
   },

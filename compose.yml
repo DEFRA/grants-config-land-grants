@@ -45,6 +45,8 @@ services:
       - ./src:/home/node/src
       - ./package.json:/home/node/package.json
       - ./configurations:/home/node/configurations
+      # Run `npm run setup` once to create a local .env before starting compose.
+      # If .env is absent Docker creates it as a directory, which Node rejects.
       - ./.env:/home/node/.env
 
 ################################################################################
