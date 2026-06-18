@@ -108,7 +108,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
     it('application/validate returns the pinned version', async () => {
       const response = await apiClient.post('/api/v2/application/validate', {
-        applicationId: 'test-application-1',
+        applicationId: `test-application-${CODE}-pin-${OLD_VERSION}`,
         requester: 'test-requester',
         applicantCrn: '1234567890',
         sbi: 123456789,
