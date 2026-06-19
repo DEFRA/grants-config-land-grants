@@ -5,6 +5,8 @@ import { apiClient } from '../../setup/api-client.js'
 const CODE = 'UPL3'
 const VERSION = '3.1.0'
 const RATE_PENCE_PER_HA = 11100
+const OLD_RATE_PENCE_PER_HA = 6600
+const OLD_VERSIONS = ['1.0.0', '2.0.0', '3.0.0']
 const PARCEL = { sheetId: 'SD8743', parcelId: '3264' }
 
 describe(`${CODE} @ ${VERSION}`, () => {
@@ -45,5 +47,56 @@ describe(`${CODE} @ ${VERSION}`, () => {
         expect.objectContaining({ actionCode: CODE, version: VERSION })
       ])
     )
+  })
+
+  describe.each(OLD_VERSIONS)('pinned to version %s', (oldVersion) => {
+    beforeAll(async () => {
+      await publishConfig({ code: CODE, semanticVersion: oldVersion })
+    })
+
+    it('payments/calculate returns the pinned version', async () => {
+      const response = await apiClient.post('/api/v2/payments/calculate', {
+        startDate: '2025-09-15',
+        parcel: [
+          {
+            ...PARCEL,
+            actions: [{ code: CODE, quantity: 1, version: oldVersion }]
+          }
+        ]
+      })
+
+      expect(response.status).toBe(200)
+      expect(Object.values(response.body.payment.parcelItems)).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            code: CODE,
+            version: oldVersion,
+            annualPaymentPence: OLD_RATE_PENCE_PER_HA
+          })
+        ])
+      )
+    })
+
+    it('application/validate returns the pinned version', async () => {
+      const response = await apiClient.post('/api/v2/application/validate', {
+        applicationId: `test-application-${CODE}-pin-${oldVersion}`,
+        requester: 'test-requester',
+        applicantCrn: '1234567890',
+        sbi: 123456789,
+        landActions: [
+          {
+            ...PARCEL,
+            actions: [{ code: CODE, quantity: 1, version: oldVersion }]
+          }
+        ]
+      })
+
+      expect(response.status).toBe(200)
+      expect(response.body.actions).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ actionCode: CODE, version: oldVersion })
+        ])
+      )
+    })
   })
 })
