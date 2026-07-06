@@ -58,7 +58,7 @@
     "undici": "8.5.0"
   },
   "devDependencies": {
-    "@aws-sdk/client-s3": "^3.1073.0",
+    "@aws-sdk/client-s3": "^3.1075.0",
     "@aws-sdk/client-sqs": "^3.1075.0",
     "@changesets/changelog-github": "0.7.0",
     "@changesets/cli": "2.31.0",
