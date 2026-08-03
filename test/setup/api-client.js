@@ -28,6 +28,7 @@ export const apiClient = {
     return request(API_BASE_URL)
       .post(path)
       .set('Authorization', await authHeader())
+      .set('X-Forwarded-Authorization', 'dummy')
       .set('Accept', 'application/json')
       .send(body)
   },
