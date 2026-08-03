@@ -1,6 +1,19 @@
 #!/bin/bash
 set -e
 
+# When tests fail, dump the land-grants-backend logs as they may show
+# useful errors ingesting the configs
+dump_logs() {
+  echo '================================================================================' >&2
+  echo 'land-grants-api LOGS' >&2
+  echo '================================================================================' >&2
+  docker compose -f ${BASE_COMPOSE} logs land-grants-backend >&2
+  echo '================================================================================' >&2
+  echo 'END OF land-grants-api LOGS' >&2
+  echo '================================================================================' >&2
+  return 1
+}
+
 # Detect and set up container runtime (Docker or Podman)
 CONTAINER_RUNTIME=""
 if command -v docker &> /dev/null; then
@@ -69,6 +82,7 @@ until docker compose -f ${BASE_COMPOSE} ps land-grants-backend | grep -q "Up"; d
     sleep 2
 done
 
+echo ''
 echo "Service started, now waiting for health check to pass..."
 
 ATTEMPTS=0
@@ -90,13 +104,14 @@ until curl -sf http://localhost:3001/health >/dev/null 2>&1; do
     sleep 3
 done
 
+echo ''
 echo "All services are healthy!"
 echo "Service Status:"
 docker compose -f ${BASE_COMPOSE} ps
 
 if [ -n "${ACCEPTANCE_TESTS_HOOK:-}" ]; then
   echo "Running per-version config tests..."
-  eval "${ACCEPTANCE_TESTS_HOOK}"
+  eval "${ACCEPTANCE_TESTS_HOOK}" || dump_logs
 fi
 
 eval "${COMPOSE_COMMAND} down -v"
