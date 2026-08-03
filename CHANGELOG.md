@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.3.0
+
+### Minor Changes
+
+- ce067f8: Add SCR2 action config
+
 ## 0.2.2
 
 ### Patch Changes
