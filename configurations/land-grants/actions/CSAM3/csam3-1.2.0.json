@@ -22,7 +22,7 @@
   "applicationUnitOfMeasurement": "ha",
   "durationYears": 1,
   "startDate": "2025-01-01",
-  "semanticVersion": "1.1.1",
+  "semanticVersion": "1.2.0",
   "displayOrder": 8,
   "paymentMethod": {
     "name": "default-calculation",
