@@ -34,8 +34,8 @@
   "enabled": true,
   "display": true,
   "groupId": 4,
-  "metadata": {
-    "guidanceLink": "https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys",
-    "availableAreaType": "partial"
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys",
+  "availability": {
+    "type": "partial"
   }
 }

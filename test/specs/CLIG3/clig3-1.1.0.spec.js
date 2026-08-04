@@ -47,11 +47,11 @@ describe(`${CODE} @ ${VERSION}`, () => {
     )
   })
 
-  it('parcels returns the configured metadata', async () => {
+  it('parcels returns the configured guidanceUrl and availability', async () => {
     const response = await apiClient.post('/api/v2/parcels', {
       sbi: '123456789',
       parcelIds: [`${PARCEL.sheetId}-${PARCEL.parcelId}`],
-      fields: ['actions', 'actions.metadata']
+      fields: ['actions', 'actions.availability']
     })
 
     expect(response.status).toBe(200)
@@ -59,10 +59,10 @@ describe(`${CODE} @ ${VERSION}`, () => {
       expect.arrayContaining([
         expect.objectContaining({
           code: CODE,
-          metadata: {
-            guidanceLink:
-              'https://www.gov.uk/find-funding-for-land-or-farms/clig3-manage-grassland-with-very-low-nutrient-inputs',
-            availableAreaType: 'total'
+          guidanceUrl:
+            'https://www.gov.uk/find-funding-for-land-or-farms/clig3-manage-grassland-with-very-low-nutrient-inputs',
+          availability: {
+            type: 'total'
           }
         })
       ])

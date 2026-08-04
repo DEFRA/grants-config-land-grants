@@ -52,8 +52,8 @@
   "enabled": true,
   "display": true,
   "groupId": 4,
-  "metadata": {
-    "guidanceLink": "https://www.gov.uk/find-funding-for-land-or-farms/clig3-manage-grassland-with-very-low-nutrient-inputs",
-    "availableAreaType": "total"
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/clig3-manage-grassland-with-very-low-nutrient-inputs",
+  "availability": {
+    "type": "total"
   }
 }
