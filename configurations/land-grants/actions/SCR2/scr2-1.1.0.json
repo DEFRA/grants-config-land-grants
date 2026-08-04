@@ -1,0 +1,41 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "code": "SCR2",
+  "description": "Manage scrub and open habitat mosaics",
+  "display": true,
+  "displayOrder": 0,
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "metadata": {
+    "guidanceLink": "https://www.gov.uk/find-funding-for-land-or-farms/scr2-manage-scrub-and-open-habitat-mosaics",
+    "availableAreaType": "partial"
+  },
+  "payment": {
+    "ratePerUnitGbp": 350
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 350
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "config": {
+        "layerName": "moorland",
+        "maximumIntersectionPercent": 0,
+        "tolerancePercent": 10
+      },
+      "description": "The parcel should not be on the moorland",
+      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer"
+    },
+    {
+      "description": "Has the total or partial available area been applied for?",
+      "name": "applied-for-total-or-partial-available-area"
+    }
+  ],
+  "semanticVersion": "1.0.2",
+  "startDate": "2026-10-18"
+}
