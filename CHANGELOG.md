@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.3.1
+
+### Patch Changes
+
+- b663282: Add missing rule to SCR2
+
 ## 0.3.0
 
 ### Minor Changes
