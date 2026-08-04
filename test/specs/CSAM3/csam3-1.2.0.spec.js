@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'CSAM3'
-const VERSION = '1.1.1'
+const VERSION = '1.2.0'
 const RATE_PENCE_PER_HA = 22400
 const PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 
