@@ -7,10 +7,6 @@
   "durationYears": 3,
   "enabled": true,
   "groupId": null,
-  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/scr2-manage-scrub-and-open-habitat-mosaics",
-  "availability": {
-    "type": "partial"
-  },
   "payment": {
     "ratePerUnitGbp": 350
   },
@@ -36,6 +32,10 @@
       "name": "applied-for-total-or-partial-available-area"
     }
   ],
-  "semanticVersion": "1.2.0",
-  "startDate": "2026-10-18"
+  "semanticVersion": "1.1.0",
+  "startDate": "2026-10-18",
+    "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/scr2-manage-scrub-and-open-habitat-mosaics",
+  "availability": {
+    "type": "partial"
+  }
 }
