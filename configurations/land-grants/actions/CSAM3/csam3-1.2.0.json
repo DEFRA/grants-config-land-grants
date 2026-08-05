@@ -1,0 +1,37 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "code": "CSAM3",
+  "description": "Herbal leys",
+  "display": true,
+  "displayOrder": 0,
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "payment": {
+    "ratePerUnitGbp": 224
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 224
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "description": "Has the total or partial available area been applied for?",
+      "name": "applied-for-total-or-partial-available-area"
+    },
+    {
+      "config": {
+        "layerName": "moorland",
+        "maximumIntersectionPercent": 0,
+        "tolerancePercent": 10
+      },
+      "description": "The parcel should not be on the moorland",
+      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer"
+    }
+  ],
+  "semanticVersion": "1.2.0",
+  "startDate": "2025-01-01"
+}

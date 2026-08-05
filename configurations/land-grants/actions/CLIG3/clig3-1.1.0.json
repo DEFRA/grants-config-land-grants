@@ -1,0 +1,55 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "code": "CLIG3",
+  "description": "Manage grassland with very low nutrient inputs",
+  "display": true,
+  "displayOrder": 0,
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "payment": {
+    "ratePerUnitGbp": 151
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 151
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "description": "Has the total available area been applied for?",
+      "name": "applied-for-total-available-area"
+    },
+    {
+      "config": {
+        "layerName": "moorland",
+        "maximumIntersectionPercent": 0,
+        "tolerancePercent": 10
+      },
+      "description": "The parcel should not be on the moorland",
+      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer"
+    },
+    {
+      "config": {
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "tolerancePercent": 1
+      },
+      "description": "Is the site of special scientific interest?",
+      "name": "sssi-consent-required"
+    },
+    {
+      "config": {
+        "caveatDescription": "A hefer is needed from Historic England",
+        "layerName": "historic_features",
+        "tolerancePercent": 0
+      },
+      "description": "Does the site require a Historic Environment Farm Environment Record?",
+      "name": "hefer-consent-required"
+    }
+  ],
+  "semanticVersion": "1.1.0",
+  "startDate": "2025-01-01"
+}
