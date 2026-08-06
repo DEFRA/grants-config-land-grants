@@ -51,7 +51,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     const response = await apiClient.post('/api/v2/parcels', {
       sbi: '123456789',
       parcelIds: [`${PARCEL.sheetId}-${PARCEL.parcelId}`],
-      fields: ['actions', 'actions.availability']
+      fields: ['actions']
     })
 
     expect(response.status).toBe(200)
