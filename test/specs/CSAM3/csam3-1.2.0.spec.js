@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'CSAM3'
-const VERSION = '1.1.0'
+const VERSION = '1.2.0'
 const RATE_PENCE_PER_HA = 22400
 const PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 
@@ -15,9 +15,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
   it('payments/calculate returns the configured rate', async () => {
     const response = await apiClient.post('/api/v2/payments/calculate', {
       startDate: '2025-09-15',
-      parcel: [
-        { ...PARCEL, actions: [{ code: CODE, quantity: 1, version: VERSION }] }
-      ]
+      parcel: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
     })
 
     expect(response.status).toBe(200)
@@ -38,15 +36,35 @@ describe(`${CODE} @ ${VERSION}`, () => {
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: 123456789,
-      landActions: [
-        { ...PARCEL, actions: [{ code: CODE, quantity: 1, version: VERSION }] }
-      ]
+      landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
     })
 
     expect(response.status).toBe(200)
     expect(response.body.actions).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ actionCode: CODE, version: VERSION })
+      ])
+    )
+  })
+
+  it('parcels returns the configured guidanceUrl and availability', async () => {
+    const response = await apiClient.post('/api/v2/parcels', {
+      sbi: '123456789',
+      parcelIds: [`${PARCEL.sheetId}-${PARCEL.parcelId}`],
+      fields: ['actions']
+    })
+
+    expect(response.status).toBe(200)
+    expect(response.body.parcels[0].actions).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: CODE,
+          guidanceUrl:
+            'https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys',
+          availability: {
+            type: 'partial'
+          }
+        })
       ])
     )
   })

@@ -1,0 +1,41 @@
+{
+  "code": "CSAM3",
+  "description": "Herbal leys",
+  "payment": {
+    "ratePerUnitGbp": 224
+  },
+  "rules": [
+    {
+      "name": "applied-for-total-or-partial-available-area",
+      "description": "Has the total or partial available area been applied for?"
+    },
+    {
+      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer",
+      "config": {
+        "layerName": "moorland",
+        "tolerancePercent": 10,
+        "maximumIntersectionPercent": 0
+      },
+      "description": "The parcel should not be on the moorland"
+    }
+  ],
+  "applicationUnitOfMeasurement": "ha",
+  "durationYears": 3,
+  "startDate": "2025-01-01",
+  "semanticVersion": "1.2.0",
+  "displayOrder": 0,
+  "paymentMethod": {
+    "name": "default-calculation",
+    "config": {
+      "ratePerUnitGbp": 224
+    },
+    "version": "1.0.0"
+  },
+  "enabled": true,
+  "display": true,
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys",
+  "availability": {
+    "type": "partial"
+  }
+}
