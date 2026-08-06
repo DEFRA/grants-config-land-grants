@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.4.0
+
+### Minor Changes
+
+- 1b22c23: Adding metadata to CLIG3, CSAM3 and SCR2
+
 ## 0.3.1
 
 ### Patch Changes
