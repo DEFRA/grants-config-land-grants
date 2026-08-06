@@ -15,7 +15,9 @@ describe(`${CODE} @ ${VERSION}`, () => {
   it('payments/calculate returns the configured rate', async () => {
     const response = await apiClient.post('/api/v2/payments/calculate', {
       startDate: '2025-09-15',
-      parcel: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
+      parcel: [
+        { ...PARCEL, actions: [{ code: CODE, quantity: 1, version: VERSION }] }
+      ]
     })
 
     expect(response.status).toBe(200)
@@ -36,7 +38,9 @@ describe(`${CODE} @ ${VERSION}`, () => {
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: 123456789,
-      landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
+      landActions: [
+        { ...PARCEL, actions: [{ code: CODE, quantity: 1, version: VERSION }] }
+      ]
     })
 
     expect(response.status).toBe(200)
