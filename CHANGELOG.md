@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.5.1
+
+### Patch Changes
+
+- be262a2: Add missing guidanceUrl and availability.type for CNUM2
+
 ## 0.5.0
 
 ### Minor Changes
