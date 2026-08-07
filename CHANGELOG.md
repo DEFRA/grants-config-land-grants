@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.5.0
+
+### Minor Changes
+
+- d56ea26: Add CNUM2 action
+
 ## 0.4.0
 
 ### Minor Changes
