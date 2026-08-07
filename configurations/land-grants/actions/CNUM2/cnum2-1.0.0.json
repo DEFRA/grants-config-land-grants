@@ -1,0 +1,47 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "code": "CNUM2",
+  "description": "Legumes on improved grassland",
+  "display": true,
+  "displayOrder": 0,
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "payment": {
+    "ratePerUnitGbp": 102
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 102
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "config": {
+        "layerName": "moorland",
+        "maximumIntersectionPercent": 0,
+        "tolerancePercent": 10
+      },
+      "description": "The parcel should not be on the moorland",
+      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer"
+    },
+    {
+      "description": "Has the total or partial available area been applied for?",
+      "name": "applied-for-total-or-partial-available-area"
+    },
+    {
+      "config": {
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "tolerancePercent": 1
+      },
+      "description": "Is the site of special scientific interest?",
+      "name": "sssi-consent-required",
+      "version": "1.0.0"
+    }
+  ],
+  "semanticVersion": "1.0.0",
+  "startDate": "2026-10-18"
+}
