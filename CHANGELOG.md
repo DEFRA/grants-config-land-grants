@@ -1,5 +1,13 @@
 # grants-config-land-grants
 
+## 0.6.0
+
+### Minor Changes
+
+- e073a7f: Add WBD1 (Manage ponds) action for private beta: £257 per pond per year, 3-year duration,
+  HEFER consent check, and the new manual-check-required rule flagging that ponds must be
+  manually verified as not on SSSI land.
+
 ## 0.5.1
 
 ### Patch Changes
