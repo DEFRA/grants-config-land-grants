@@ -38,7 +38,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
       applicationId: 'test-application-1',
       requester: 'test-requester',
       applicantCrn: '1234567890',
-      sbi: 123456789,
+      sbi: '123456789',
       landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
     })
 
