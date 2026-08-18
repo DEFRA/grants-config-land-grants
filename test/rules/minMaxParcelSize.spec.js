@@ -19,6 +19,9 @@ describe('minMaxParcelSize', () => {
         if (minimumParcelSizeHa && maximumParcelSizeHa) {
           expect(minimumParcelSizeHa).toBeLessThan(maximumParcelSizeHa)
         }
+        expect(
+          minimumParcelSizeHa ?? maximumParcelSizeHa ?? null
+        ).not.toBeNull()
       }
     }
   })
