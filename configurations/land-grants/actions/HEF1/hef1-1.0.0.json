@@ -29,5 +29,6 @@
   },
   "enabled": true,
   "display": true,
-  "groupId": null
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/hef1-maintain-weatherproof-traditional-farm-or-forestry-buildings"
 }
