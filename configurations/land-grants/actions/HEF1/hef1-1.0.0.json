@@ -1,0 +1,34 @@
+{
+  "code": "HEF1",
+  "description": "Maintain weatherproof traditional farm or forestry buildings",
+  "payment": {
+    "ratePerUnitGbp": 5
+  },
+  "rules": [
+    {
+      "name": "hefer-consent-required",
+      "config": {
+        "layerName": "historic_features",
+        "tolerancePercent": 0,
+        "caveatDescription": "A hefer is needed from Historic England"
+      },
+      "description": "Does the site require a Historic Environment Farm Environment Record?"
+    }
+  ],
+  "applicationUnitOfMeasurement": "sqm",
+  "durationYears": 3,
+  "startDate": "2026-10-18",
+  "semanticVersion": "1.0.0",
+  "displayOrder": 0,
+  "paymentMethod": {
+    "name": "default-calculation",
+    "config": {
+      "ratePerUnitGbp": 5
+    },
+    "version": "1.0.0"
+  },
+  "enabled": true,
+  "display": true,
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/hef1-maintain-weatherproof-traditional-farm-or-forestry-buildings"
+}

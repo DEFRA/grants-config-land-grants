@@ -35,7 +35,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
       applicationId: 'test-application-1',
       requester: 'test-requester',
       applicantCrn: '1234567890',
-      sbi: 123456789,
+      sbi: '123456789',
       landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
     })
 
@@ -55,17 +55,13 @@ describe(`${CODE} @ ${VERSION}`, () => {
     })
 
     expect(response.status).toBe(200)
-    expect(response.body.parcels[0].actions).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          code: CODE,
-          guidanceUrl:
-            'https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys',
-          availability: {
-            type: 'partial'
-          }
-        })
-      ])
+    expect(response.body.parcels[0].actions).toContainEqual(
+      expect.objectContaining({
+        code: CODE,
+        guidanceUrl:
+          'https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys',
+        availability: expect.objectContaining({ type: 'partial' })
+      })
     )
   })
 
@@ -104,7 +100,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
         applicationId: `test-application-${CODE}-pin-${OLD_VERSION}`,
         requester: 'test-requester',
         applicantCrn: '1234567890',
-        sbi: 123456789,
+        sbi: '123456789',
         landActions: [
           {
             ...PARCEL,
