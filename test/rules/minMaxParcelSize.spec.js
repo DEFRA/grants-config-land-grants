@@ -4,8 +4,7 @@ import { getActionConfig } from '../setup/utils.js'
 const ruleName = 'min-max-parcel-size-1.0.0'
 
 describe('minMaxParcelSize', () => {
-
-  let configFiles;
+  let configFiles
 
   beforeAll(async () => {
     configFiles = await getActionConfig()
@@ -23,5 +22,4 @@ describe('minMaxParcelSize', () => {
       }
     }
   })
-
 })
