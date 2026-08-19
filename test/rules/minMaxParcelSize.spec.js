@@ -15,12 +15,12 @@ describe('minMaxParcelSize', () => {
       expect(config).not.toBeNull()
       const ruleConfig = config.rules.find((r) => r.name === ruleName)
       if (ruleConfig) {
-        const { minimumParcelSizeHa, maximumParcelSizeHa } = ruleConfig.config
-        if (minimumParcelSizeHa && maximumParcelSizeHa) {
-          expect(minimumParcelSizeHa).toBeLessThan(maximumParcelSizeHa)
+        const { minimumParcelSizeSqm, maximumParcelSizeSqm } = ruleConfig.config
+        if (minimumParcelSizeSqm && maximumParcelSizeSqm) {
+          expect(minimumParcelSizeSqm).toBeLessThan(maximumParcelSizeSqm)
         }
         expect(
-          minimumParcelSizeHa ?? maximumParcelSizeHa ?? null
+          minimumParcelSizeSqm ?? maximumParcelSizeSqm ?? null
         ).not.toBeNull()
       }
     }
