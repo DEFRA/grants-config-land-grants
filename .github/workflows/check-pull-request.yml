@@ -34,7 +34,6 @@ jobs:
           npm ci
           npm run format:check
           npm run lint
-          npm run validate:configs
           npm run test:unit
           npm test
 

@@ -14,6 +14,9 @@ export async function getActionConfig() {
     })) {
       dirFiles.push(file)
     }
+
+    if (dirFiles.length === 0) continue
+
     const latestConfigFile = dirFiles.sort((a, b) => {
       const aVersion = parseVersion(a)
       const bVersion = parseVersion(b)
