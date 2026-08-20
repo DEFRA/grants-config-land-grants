@@ -1,9 +1,9 @@
-import { readFile, glob } from 'node:fs/promises'
+import { getActionConfig } from '../setup/utils.js'
 
 describe('payment rates', () => {
   test('should have matching values', async () => {
-    for await (const file of glob('configurations/**/*.json')) {
-      const config = JSON.parse(await readFile(file, 'utf8'))
+    const configFiles = await getActionConfig()
+    for (const config of configFiles) {
       const { payment, paymentMethod } = config
 
       if (!payment || !paymentMethod?.config) continue
