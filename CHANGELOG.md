@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.8.0
+
+### Minor Changes
+
+- 437260d: Add manual-check-required caveat to HEF1 flagging that buildings must be manually verified as meeting the action criteria
+
 ## 0.7.0
 
 ### Minor Changes
