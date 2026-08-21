@@ -4,6 +4,14 @@ import path from 'node:path'
 const folderPath = 'configurations/land-grants/actions'
 
 export async function getActionConfig() {
+  const files = []
+  for await (const file of glob('configurations/**/*.json')) {
+    files.push(await parseConfigFile(file))
+  }
+  return files
+}
+
+export async function getLatestActionConfig() {
   const dirs = await readdir(path.join(process.cwd(), folderPath))
   const files = []
 
@@ -14,6 +22,9 @@ export async function getActionConfig() {
     })) {
       dirFiles.push(file)
     }
+
+    if (dirFiles.length === 0) continue
+
     const latestConfigFile = dirFiles.sort((a, b) => {
       const aVersion = parseVersion(a)
       const bVersion = parseVersion(b)
