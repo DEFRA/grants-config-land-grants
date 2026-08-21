@@ -32,7 +32,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-1',
+      applicationId: 'test-application-csam3-1.2.0',
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: '123456789',
