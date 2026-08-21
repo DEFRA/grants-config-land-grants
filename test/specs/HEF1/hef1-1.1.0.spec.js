@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'HEF1'
-const VERSION = '1.0.0'
+const VERSION = '1.1.0'
 const RATE_PENCE_PER_SQM = 500
 const PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 
@@ -16,9 +16,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     const quantity = 200
     const response = await apiClient.post('/api/v2/payments/calculate', {
       startDate: '2026-10-18',
-      parcel: [
-        { ...PARCEL, actions: [{ code: CODE, quantity, version: VERSION }] }
-      ]
+      parcel: [{ ...PARCEL, actions: [{ code: CODE, quantity }] }]
     })
 
     expect(response.status).toBe(200)
@@ -38,16 +36,11 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('application/validate accepts sqm unit and runs hefer-consent-required rule', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-hef1-1.0.0',
+      applicationId: 'test-application-hef1-1.1.0',
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: '123456789',
-      landActions: [
-        {
-          ...PARCEL,
-          actions: [{ code: CODE, quantity: 150, version: VERSION }]
-        }
-      ]
+      landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 150 }] }]
     })
 
     expect(response.status).toBe(200)
@@ -64,6 +57,19 @@ describe(`${CODE} @ ${VERSION}`, () => {
               name: 'hefer-consent-required',
               passed: true,
               description: expect.any(String)
+            }),
+            expect.objectContaining({
+              name: 'building-check-required',
+              passed: true,
+              caveat: expect.objectContaining({
+                code: 'building-check-required',
+                description: 'A manual building check is required',
+                metadata: expect.objectContaining({
+                  actionCode: CODE,
+                  sheetId: PARCEL.sheetId,
+                  parcelId: PARCEL.parcelId
+                })
+              })
             })
           ])
         })
