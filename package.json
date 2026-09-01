@@ -59,7 +59,7 @@
     "@aws-sdk/client-sqs": "^3.1117.0",
     "@changesets/changelog-github": "0.7.0",
     "@changesets/cli": "2.31.1",
-    "@vitest/coverage-v8": "4.1.10",
+    "@vitest/coverage-v8": "4.1.11",
     "eslint": "10.7.0",
     "husky": "9.1.7",
     "neostandard": "0.13.0",
@@ -67,7 +67,7 @@
     "pg": "^8.22.0",
     "prettier": "3.9.6",
     "supertest": "^7.0.0",
-    "vitest": "4.1.10",
+    "vitest": "4.1.11",
     "vitest-fetch-mock": "0.4.5"
   },
   "overrides": {
