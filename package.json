@@ -67,7 +67,7 @@
     "pg": "^8.22.0",
     "prettier": "3.9.6",
     "supertest": "^7.0.0",
-    "vitest": "4.1.10",
+    "vitest": "4.1.11",
     "vitest-fetch-mock": "0.4.5"
   },
   "overrides": {
