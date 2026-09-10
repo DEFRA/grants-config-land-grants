@@ -1,5 +1,8 @@
 services:
   land-grants-backend-postgres:
+    # land-grants-api builds its own PostGIS image; reset that so the pre-seeded
+    # image below is pulled rather than used as a tag for a freshly built one
+    build: !reset null
     image: defradigital/land-grants-postgres-seeded:latest
 
   land-grants-backend:
