@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.8.1
+
+### Patch Changes
+
+- 4f6867f: Add availability.type = total to actions missing it
+
 ## 0.8.0
 
 ### Minor Changes
