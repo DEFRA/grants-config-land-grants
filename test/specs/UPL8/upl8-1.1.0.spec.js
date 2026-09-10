@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'UPL8'
-const VERSION = '1.0.0'
+const VERSION = '1.1.0'
 const RATE_PENCE_PER_HA = 7400
 const PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 

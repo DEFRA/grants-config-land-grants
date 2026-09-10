@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'UPL3'
-const VERSION = '3.1.0'
+const VERSION = '3.2.0'
 const RATE_PENCE_PER_HA = 11100
 const OLD_RATE_PENCE_PER_HA = 6600
 const OLD_VERSIONS = ['1.0.0', '2.0.0', '3.0.0']

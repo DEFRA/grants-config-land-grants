@@ -1,0 +1,58 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "availability": {
+    "type": "total"
+  },
+  "code": "UPL1",
+  "description": "Moderate livestock grazing on moorland",
+  "display": true,
+  "displayOrder": 2,
+  "durationYears": 1,
+  "enabled": true,
+  "groupId": 2,
+  "payment": {
+    "ratePerUnitGbp": 35
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 35
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "config": {
+        "layerName": "moorland",
+        "minimumIntersectionPercent": 50,
+        "tolerancePercent": 1
+      },
+      "description": "Is this parcel on the moorland?",
+      "name": "parcel-has-intersection-with-data-layer"
+    },
+    {
+      "description": "Has the total available area been applied for?",
+      "name": "applied-for-total-available-area"
+    },
+    {
+      "config": {
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "tolerancePercent": 1
+      },
+      "description": "Is the site of special scientific interest?",
+      "name": "sssi-consent-required"
+    },
+    {
+      "config": {
+        "caveatDescription": "A hefer is needed from Historic England",
+        "layerName": "historic_features",
+        "tolerancePercent": 0
+      },
+      "description": "Does the site require a Historic Environment Farm Environment Record?",
+      "name": "hefer-consent-required"
+    }
+  ],
+  "semanticVersion": "3.2.0",
+  "startDate": "2025-01-01"
+}
