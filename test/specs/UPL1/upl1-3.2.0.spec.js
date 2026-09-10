@@ -2,12 +2,12 @@ import { describe, beforeAll, it, expect } from 'vitest'
 import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
-const CODE = 'UPL2'
-const VERSION = '3.1.0'
-const RATE_PENCE_PER_HA = 8900
-const OLD_RATE_PENCE_PER_HA = 5300
+const CODE = 'UPL1'
+const VERSION = '3.2.0'
+const RATE_PENCE_PER_HA = 3500
+const OLD_RATE_PENCE_PER_HA = 2000
 const OLD_VERSIONS = ['1.0.0', '2.0.0', '3.0.0']
-const PARCEL = { sheetId: 'SD7247', parcelId: '8028' }
+const PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 
 describe(`${CODE} @ ${VERSION}`, () => {
   beforeAll(async () => {
