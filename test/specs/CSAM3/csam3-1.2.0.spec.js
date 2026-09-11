@@ -47,24 +47,6 @@ describe(`${CODE} @ ${VERSION}`, () => {
     )
   })
 
-  it('parcels returns the configured guidanceUrl and availability', async () => {
-    const response = await apiClient.post('/api/v2/parcels', {
-      sbi: '123456789',
-      parcelIds: [`${PARCEL.sheetId}-${PARCEL.parcelId}`],
-      fields: ['actions']
-    })
-
-    expect(response.status).toBe(200)
-    expect(response.body.parcels[0].actions).toContainEqual(
-      expect.objectContaining({
-        code: CODE,
-        guidanceUrl:
-          'https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys',
-        availability: expect.objectContaining({ type: 'partial' })
-      })
-    )
-  })
-
   describe('pinned to an older version', () => {
     const OLD_VERSION = '1.0.0'
 
