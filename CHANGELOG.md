@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.8.2
+
+### Patch Changes
+
+- 8c91d5a: Add availability.type = total to UPL10
+
 ## 0.8.1
 
 ### Patch Changes
