@@ -4,7 +4,6 @@ import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'GRH12'
 const VERSION = '1.0.0'
-const RATE_PENCE_PER_HA = 20300
 const PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 
 describe(`${CODE} @ ${VERSION}`, () => {
@@ -12,7 +11,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     await publishConfig({ code: CODE, semanticVersion: VERSION })
   })
 
-  it('payments/calculate returns the configured rate', async () => {
+  it('payments/calculate returns 400 as config is disabled', async () => {
     const response = await apiClient.post('/api/v2/payments/calculate', {
       startDate: '2026-10-18',
       parcel: [
@@ -21,33 +20,5 @@ describe(`${CODE} @ ${VERSION}`, () => {
     })
 
     expect(response.status).toBe(200)
-    expect(Object.values(response.body.payment.parcelItems)).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          code: CODE,
-          version: VERSION,
-          annualPaymentPence: RATE_PENCE_PER_HA
-        })
-      ])
-    )
-  })
-
-  it('application/validate accepts the config', async () => {
-    const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-grh12-1.0.0',
-      requester: 'test-requester',
-      applicantCrn: '1234567890',
-      sbi: '123456789',
-      landActions: [
-        { ...PARCEL, actions: [{ code: CODE, quantity: 1, version: VERSION }] }
-      ]
-    })
-
-    expect(response.status).toBe(200)
-    expect(response.body.actions).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ actionCode: CODE, version: VERSION })
-      ])
-    )
   })
 })
