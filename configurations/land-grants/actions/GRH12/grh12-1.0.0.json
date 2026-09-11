@@ -2,7 +2,7 @@
   "applicationUnitOfMeasurement": "ha",
   "code": "GRH12",
   "description": "Manage rough grassland and upland breeding waders",
-  "display": true,
+  "display": false,
   "displayOrder": 0,
   "durationYears": 3,
   "enabled": false,

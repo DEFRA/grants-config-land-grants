@@ -19,6 +19,6 @@ describe(`${CODE} @ ${VERSION}`, () => {
       ]
     })
 
-    expect(response.status).toBe(200)
+    expect(response.status).toBe(400)
   })
 })
