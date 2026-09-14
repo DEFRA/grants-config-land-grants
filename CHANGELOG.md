@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.10.0
+
+### Minor Changes
+
+- 05238a2: add config for GRH12
+
 ## 0.9.0
 
 ### Minor Changes
