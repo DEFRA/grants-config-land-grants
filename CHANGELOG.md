@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.9.0
+
+### Minor Changes
+
+- 1ed5a4c: Add rotationType to CSAM3 and CNUM2
+
 ## 0.8.2
 
 ### Patch Changes
