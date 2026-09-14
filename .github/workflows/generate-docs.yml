@@ -1,0 +1,52 @@
+name: Generate action docs
+
+# Regenerates docs/actions/** from the action configs whenever they change on
+# main, and commits the result. The path filter deliberately excludes docs/** so
+# the bot's own commit cannot retrigger this workflow.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'configurations/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: generate-docs
+  cancel-in-progress: false
+
+jobs:
+  generate-docs:
+    name: Generate and commit action docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #7.0.1
+
+      - name: Setup Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 #7.0.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate docs
+        run: CI=true npm run docs:smoke
+
+      - name: Commit docs
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          if git diff --quiet -- docs/actions; then
+            echo "No documentation changes to commit."
+            exit 0
+          fi
+          git add docs/actions
+          git commit -m "docs: regenerate action documentation [skip ci]"
+          git push
