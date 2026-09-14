@@ -1,0 +1,74 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "code": "GRH12",
+  "description": "Manage rough grassland and upland breeding waders",
+  "display": false,
+  "displayOrder": 0,
+  "durationYears": 3,
+  "enabled": false,
+  "groupId": null,
+  "availability": { "type": "partial" },
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/grh12-manage-rough-grassland-for-upland-breeding-waders",
+  "payment": {
+    "ratePerUnitGbp": 203
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 203
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "config": {
+        "minimumParcelSizeSqm": 20000
+      },
+      "description": "The parcel's total area must be 2 hectares or more",
+      "name": "min-max-parcel-size"
+    },
+    {
+      "config": {
+        "layerName": "lfa",
+        "tolerancePercent": 1,
+        "minimumIntersectionPercent": 100
+      },
+      "description": "Is this parcel on less favoured area?",
+      "name": "parcel-has-intersection-with-data-layer"
+    },
+    {
+      "config": {
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "tolerancePercent": 1
+      },
+      "description": "Is the site of special scientific interest?",
+      "name": "sssi-consent-required",
+      "version": "1.0.0"
+    },
+    {
+      "name": "hefer-consent-required",
+      "config": {
+        "layerName": "historic_features",
+        "tolerancePercent": 0,
+        "caveatDescription": "A hefer is needed from Historic England"
+      },
+      "description": "Does the site require a Historic Environment Farm Environment Record?"
+    },
+    {
+      "config": {
+        "layerName": "moorland",
+        "maximumIntersectionPercent": 0,
+        "tolerancePercent": 10
+      },
+      "description": "The parcel should not be on the moorland",
+      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer"
+    },
+    {
+      "description": "Has the total or partial available area been applied for?",
+      "name": "applied-for-total-or-partial-available-area"
+    }
+  ],
+  "semanticVersion": "1.0.0",
+  "startDate": "2026-10-18"
+}
