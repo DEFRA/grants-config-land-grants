@@ -6,7 +6,7 @@ import { apiClient } from '../../setup/api-client.js'
 // available-area calculation) and 47d8fc59 (generic manual-check-required rule)
 
 const CODE = 'WBD1'
-const VERSION = '1.0.0'
+const VERSION = '1.1.0'
 const RATE_PENCE_PER_COUNT = 25700
 const PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 
