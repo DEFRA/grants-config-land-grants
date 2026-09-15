@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.11.0
+
+### Minor Changes
+
+- c98e7a1: Add displayUnit and displayUnitPlural to WBD1
+
 ## 0.10.0
 
 ### Minor Changes
