@@ -50,14 +50,14 @@ describe(`${CODE} @ ${VERSION}`, () => {
           version: VERSION,
           rules: expect.arrayContaining([
             expect.objectContaining({
-              name: 'has-compatible-land-use-code',
+              name: 'parcel-has-valid-land-cover',
               passed: false,
-              reason: 'Parcel does not have a compatible land use code',
-              description: 'Does the site have a compatible land use code?',
+              reason: 'Parcel does not have valid land covers for this action',
+              description: 'Does the site have a compatible land covers?',
               explanations: [
                 {
-                  title: 'Land use code check',
-                  lines: ['Land use code WF03 is required']
+                  title: 'Parcel has valid land cover',
+                  lines: []
                 }
               ]
             })

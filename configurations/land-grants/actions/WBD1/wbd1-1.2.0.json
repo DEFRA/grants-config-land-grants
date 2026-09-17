@@ -31,11 +31,8 @@
       "name": "hefer-consent-required"
     },
     {
-      "config": {
-        "landUseCode": "WF03"
-      },
-      "description": "Does the site have a compatible land use code?",
-      "name": "has-compatible-land-use-code"
+      "description": "Does the site have a compatible land covers?",
+      "name": "parcel-has-valid-land-cover"
     }
   ],
   "semanticVersion": "1.2.0",
