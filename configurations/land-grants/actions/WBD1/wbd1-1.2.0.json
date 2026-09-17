@@ -33,6 +33,14 @@
     {
       "description": "Does the site have a compatible land covers?",
       "name": "parcel-has-valid-land-cover"
+    },
+    {
+      "config": {
+        "caveatDescription": "A manual pond check is required"
+      },
+      "description": "Check that ponds on the land meet the action criteria",
+      "name": "pond-check-required",
+      "type": "manual-check-required"
     }
   ],
   "semanticVersion": "1.2.0",
