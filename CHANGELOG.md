@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.12.0
+
+### Minor Changes
+
+- 8f0d324: update WBD1 action config
+
 ## 0.11.0
 
 ### Minor Changes
