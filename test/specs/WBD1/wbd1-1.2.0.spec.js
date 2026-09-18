@@ -52,7 +52,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
             expect.objectContaining({
               name: 'parcel-has-valid-land-cover',
               passed: false,
-              reason: 'Parcel does not have valid land covers for this action',
+              reason: 'Rule requires action and parcel land covers',
               description: 'Does the site have a compatible land covers?',
               explanations: [
                 {
