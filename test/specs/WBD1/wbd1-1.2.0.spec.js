@@ -6,7 +6,7 @@ import { apiClient } from '../../setup/api-client.js'
 // available-area calculation) and 47d8fc59 (generic manual-check-required rule)
 
 const CODE = 'WBD1'
-const VERSION = '1.1.0'
+const VERSION = '1.2.0'
 const RATE_PENCE_PER_COUNT = 25700
 const PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 
@@ -50,17 +50,16 @@ describe(`${CODE} @ ${VERSION}`, () => {
           version: VERSION,
           rules: expect.arrayContaining([
             expect.objectContaining({
-              name: 'pond-check-required',
-              passed: true,
-              caveat: expect.objectContaining({
-                code: 'pond-check-required',
-                description: 'A manual pond check is required',
-                metadata: expect.objectContaining({
-                  actionCode: CODE,
-                  sheetId: PARCEL.sheetId,
-                  parcelId: PARCEL.parcelId
-                })
-              })
+              name: 'parcel-has-valid-land-cover',
+              passed: false,
+              reason: 'Rule requires action and parcel land covers',
+              description: 'Does the site have a compatible land covers?',
+              explanations: [
+                {
+                  title: 'Parcel has valid land cover',
+                  lines: []
+                }
+              ]
             })
           ])
         })
