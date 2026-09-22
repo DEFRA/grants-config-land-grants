@@ -2,12 +2,9 @@ import { describe, beforeAll, it, expect } from 'vitest'
 import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
-// Requires land-grants-api commits e4cd344f (count-based unit support in the
-// available-area calculation) and 47d8fc59 (generic manual-check-required rule)
-
-const CODE = 'WBD1'
-const VERSION = '1.2.0'
-const RATE_PENCE_PER_COUNT = 25700
+const CODE = 'UPL1_26'
+const VERSION = '1.0.0'
+const RATE_PENCE_PER_HA = 3500
 const PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 
 describe(`${CODE} @ ${VERSION}`, () => {
@@ -27,13 +24,13 @@ describe(`${CODE} @ ${VERSION}`, () => {
         expect.objectContaining({
           code: CODE,
           version: VERSION,
-          annualPaymentPence: RATE_PENCE_PER_COUNT
+          annualPaymentPence: RATE_PENCE_PER_HA
         })
       ])
     )
   })
 
-  it('application/validate accepts the config and attaches the pond-check-required caveat', async () => {
+  it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
       applicationId: 'test-application-1',
       requester: 'test-requester',
@@ -45,19 +42,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     expect(response.status).toBe(200)
     expect(response.body.actions).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({
-          actionCode: CODE,
-          version: VERSION,
-          rules: expect.arrayContaining([
-            expect.objectContaining({
-              name: 'pond-check-required',
-              caveat: expect.objectContaining({
-                code: 'pond-check-required',
-                description: 'A manual pond check is required'
-              })
-            })
-          ])
-        })
+        expect.objectContaining({ actionCode: CODE, version: VERSION })
       ])
     )
   })
