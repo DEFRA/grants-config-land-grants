@@ -6,6 +6,8 @@
 export const DEFAULT_PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 
 export const PARCELS = {
+  BND1: { sheetId: 'SD6855', parcelId: '7704' },
+  BND1_26: { sheetId: 'SD6855', parcelId: '7704' },
   CLIG3: { sheetId: 'SD6743', parcelId: '8083' },
   CNUM2: { sheetId: 'SD6743', parcelId: '8083' },
   CSAM3: { sheetId: 'SD6743', parcelId: '8083' },
