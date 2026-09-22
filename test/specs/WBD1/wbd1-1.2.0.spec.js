@@ -50,16 +50,11 @@ describe(`${CODE} @ ${VERSION}`, () => {
           version: VERSION,
           rules: expect.arrayContaining([
             expect.objectContaining({
-              name: 'parcel-has-valid-land-cover',
-              passed: false,
-              reason: 'Rule requires action and parcel land covers',
-              description: 'Does the site have a compatible land covers?',
-              explanations: [
-                {
-                  title: 'Parcel has valid land cover',
-                  lines: []
-                }
-              ]
+              name: 'pond-check-required',
+              caveat: expect.objectContaining({
+                code: 'pond-check-required',
+                description: 'A manual pond check is required'
+              })
             })
           ])
         })
