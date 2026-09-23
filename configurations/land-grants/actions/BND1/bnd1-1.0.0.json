@@ -1,0 +1,59 @@
+{
+  "applicationUnitOfMeasurement": "m",
+  "code": "BND1",
+  "description": "Maintain dry stone walls",
+  "display": false,
+  "displayOrder": 0,
+  "displayUnit": "metre",
+  "displayUnitPlural": "metres",
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "availability": {
+    "type": "partial"
+  },
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/bnd1-maintain-dry-stone-walls",
+  "payment": {
+    "ratePerUnitGbp": 0.27
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 0.27
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "config": {
+        "minimumLengthM": 20
+      },
+      "description": "Is the applied for length at least 20 m and no more than the available length?",
+      "name": "minimum-length"
+    },
+    {
+      "config": {
+        "caveatCode": "ne-consent-required",
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "toleranceMeters": 0
+      },
+      "description": "Does the parcel boundary intersect a site of special scientific interest?",
+      "name": "sssi-consent-required",
+      "type": "boundary-intersection-consent-required"
+    },
+    {
+      "config": {
+        "caveatCode": "hefer-consent-required",
+        "caveatDescription": "A HEFER is needed from Historic England",
+        "layerName": "historic_features",
+        "toleranceMeters": 0
+      },
+      "description": "Does the parcel boundary intersect a historic or archaeological feature?",
+      "name": "hefer-consent-required",
+      "type": "boundary-intersection-consent-required"
+    }
+  ],
+  "semanticVersion": "1.0.0",
+  "startDate": "2026-10-18"
+}
