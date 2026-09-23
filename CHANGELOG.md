@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.15.0
+
+### Minor Changes
+
+- a8acbd6: add action config for BND1 and BND1_26, the first linear actions
+
 ## 0.14.0
 
 ### Minor Changes
