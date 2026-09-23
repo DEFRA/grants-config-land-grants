@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.14.0
+
+### Minor Changes
+
+- 6c01781: Add applied-for-total-or-partial-available-area rule to HEF1
+
 ## 0.13.0
 
 ### Minor Changes
