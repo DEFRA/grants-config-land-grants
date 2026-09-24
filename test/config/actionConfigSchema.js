@@ -65,5 +65,8 @@ export const actionConfigSchema = Joi.object({
   availability: availabilitySchema,
   payment: paymentSchema.allow(null).required(),
   paymentMethod: paymentMethodSchema.required(),
-  rules: Joi.array().items(ruleSchema).required()
+  rules: Joi.array().items(ruleSchema).required(),
+  displayUnit: Joi.string(),
+  displayUnitPlural: Joi.string(),
+  rotationType: Joi.string()
 })
