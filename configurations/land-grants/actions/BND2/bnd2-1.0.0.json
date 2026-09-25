@@ -11,11 +11,11 @@
   "groupId": null,
   "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/bnd2-maintain-earth-banks-or-stone-faced-hedgebanks",
   "payment": {
-    "ratePerUnitGbp": 11
+    "ratePerUnitGbp": 0.11
   },
   "paymentMethod": {
     "config": {
-      "ratePerUnitGbp": 11
+      "ratePerUnitGbp": 0.11
     },
     "name": "default-calculation",
     "version": "1.0.0"

@@ -4,7 +4,7 @@ import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'BND2'
 const VERSION = '1.0.0'
-const RATE_PENCE_100_M = 1100
+const RATE_PENCE_M = 0.11
 const PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 
 describe(`${CODE} @ ${VERSION}`, () => {
@@ -24,7 +24,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
         expect.objectContaining({
           code: CODE,
           version: VERSION,
-          annualPaymentPence: RATE_PENCE_100_M
+          annualPaymentPence: RATE_PENCE_M
         })
       ])
     )
