@@ -119,7 +119,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
           code: 'ne-consent-required',
           description: 'A consent is required from Natural England',
           metadata: expect.objectContaining({
-            intersectingLengthMeters: SSSI_BOUNDARY_M
+            overlapLengthMeters: SSSI_BOUNDARY_M
           })
         })
       })
@@ -141,7 +141,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
           code: 'hefer-consent-required',
           description: 'A HEFER is needed from Historic England',
           metadata: expect.objectContaining({
-            intersectingLengthMeters: HISTORIC_BOUNDARY_M
+            overlapLengthMeters: HISTORIC_BOUNDARY_M
           })
         })
       })
