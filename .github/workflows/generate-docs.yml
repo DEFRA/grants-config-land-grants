@@ -49,4 +49,11 @@ jobs:
           fi
           git add docs/actions
           git commit -m "docs: regenerate action documentation [skip ci]"
-          git push
+          # publish.yml commits the version bump to main while this job is still running
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main && git push && exit 0
+            echo "Push attempt ${attempt} failed, retrying"
+            sleep $((attempt * 5))
+          done
+          echo "Could not push regenerated docs after 5 attempts"
+          exit 1
