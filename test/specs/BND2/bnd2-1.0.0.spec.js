@@ -4,7 +4,7 @@ import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'BND2'
 const VERSION = '1.0.0'
-const RATE_PENCE_M = 0.11
+const RATE_PENCE_M = 11
 const PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 
 describe(`${CODE} @ ${VERSION}`, () => {
@@ -32,7 +32,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-bnd2-1.1.0',
+      applicationId: 'test-application-bnd2-1.0.0',
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: '123456789',
