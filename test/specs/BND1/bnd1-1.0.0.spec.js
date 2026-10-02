@@ -161,8 +161,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     })
 
     expect(response.status).toBe(200)
-    expect(response.body.parcels[0].actions).not.toEqual(
-      expect.arrayContaining([expect.objectContaining({ code: CODE })])
-    )
+    const codes = response.body.parcels[0].actions.map((action) => action.code)
+    expect(codes).not.toContain(CODE)
   })
 })
