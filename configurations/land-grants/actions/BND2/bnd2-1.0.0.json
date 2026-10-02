@@ -1,0 +1,56 @@
+{
+  "applicationUnitOfMeasurement": "m",
+  "code": "BND2",
+  "description": "Maintain earth banks or stone-faced hedgebanks",
+  "display": true,
+  "displayOrder": 0,
+  "displayUnit": "meter",
+  "displayUnitPlural": "meters",
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/bnd2-maintain-earth-banks-or-stone-faced-hedgebanks",
+  "payment": {
+    "ratePerUnitGbp": 0.11
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 0.11
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "description": "Does the parcel have the available length?",
+      "name": "available-length"
+    },
+    {
+      "config": {
+        "minimumLengthM": 20
+      },
+      "description": "Does the parcel have the minimum length?",
+      "name": "minimum-length"
+    },
+    {
+      "config": {
+        "caveatDescription": "A hefer is needed from Historic England",
+        "layerName": "historic_features",
+        "tolerancePercent": 0
+      },
+      "description": "Does the site require a Historic Environment Farm Environment Record?",
+      "name": "hefer-consent-required"
+    },
+    {
+      "name": "sssi-consent-required",
+      "config": {
+        "layerName": "sssi",
+        "tolerancePercent": 1,
+        "caveatDescription": "A consent is required from Natural England"
+      },
+      "description": "Is the site of special scientific interest?"
+    }
+  ],
+  "semanticVersion": "1.0.0",
+  "startDate": "2026-10-18"
+}
