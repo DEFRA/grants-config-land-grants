@@ -17,7 +17,9 @@ describe(`${CODE} @ ${VERSION}`, () => {
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: '123456789',
-      landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
+      landActions: [
+        { ...PARCEL, actions: [{ code: CODE, quantity: 1, version: VERSION }] }
+      ]
     })
 
     expect(response.status).toBe(200)
@@ -46,7 +48,12 @@ describe(`${CODE} @ ${VERSION}`, () => {
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: '123456789',
-      landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1000000 }] }]
+      landActions: [
+        {
+          ...PARCEL,
+          actions: [{ code: CODE, quantity: 1000000, version: VERSION }]
+        }
+      ]
     })
 
     expect(response.status).toBe(200)
