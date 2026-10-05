@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.17.0
+
+### Minor Changes
+
+- d00ccfa: Remove "manual check required" caveat from HEF1_26
+
 ## 0.16.0
 
 ### Minor Changes
