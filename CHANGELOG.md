@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.18.0
+
+### Minor Changes
+
+- a691545: enable GRH12_26
+
 ## 0.17.0
 
 ### Minor Changes
