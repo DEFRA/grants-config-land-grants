@@ -11,6 +11,11 @@ on:
     paths:
       - 'configurations/**'
   workflow_dispatch:
+    inputs:
+      merge:
+        description: 'Merge the docs PR automatically (leave unticked to review it first)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -67,6 +72,7 @@ jobs:
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #9.0.0
         env:
           DOCS_BRANCH: ${{ steps.commit.outputs.branch }}
+          MERGE_DOCS_PR: ${{ github.event_name == 'push' || inputs.merge }}
         with:
           script: |
             const { owner, repo } = context.repo
@@ -94,6 +100,11 @@ jobs:
                 summary: `Check created for docs PR #${pr.number}`
               }
             })
+
+            if (process.env.MERGE_DOCS_PR !== 'true') {
+              core.notice(`Docs PR left open for review: ${pr.html_url}`)
+              return
+            }
 
             await github.rest.pulls.merge({
               owner,
