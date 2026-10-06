@@ -52,5 +52,8 @@
     }
   ],
   "semanticVersion": "1.0.0",
-  "startDate": "2026-10-18"
+  "startDate": "2026-10-18",
+  "availability": {
+    "type": "partial"
+  }
 }
