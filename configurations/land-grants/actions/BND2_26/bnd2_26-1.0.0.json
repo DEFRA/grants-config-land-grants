@@ -29,7 +29,7 @@
       "config": {
         "minimumLengthM": 20
       },
-      "description": "Does the parcel have the minimum length?",
+      "description": "Is the applied-for length at least 20 m and no more than the available length?",
       "name": "minimum-length"
     },
     {
@@ -38,7 +38,7 @@
         "layerName": "historic_features",
         "tolerancePercent": 0
       },
-      "description": "Does the site require a Historic Environment Farm Environment Record?",
+      "description": "Does the parcel boundary intersect a historic or archaeological feature?",
       "name": "hefer-consent-required"
     },
     {
@@ -48,7 +48,7 @@
         "tolerancePercent": 1,
         "caveatDescription": "A consent is required from Natural England"
       },
-      "description": "Is the site of special scientific interest?"
+      "description": "Does the parcel boundary intersect a Site of Special Scientific Interest?"
     }
   ],
   "semanticVersion": "1.0.0",
