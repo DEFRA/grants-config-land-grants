@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'BND1_26'
-const VERSION = '1.0.0'
+const VERSION = '1.1.0'
 const RATE_PENCE_PER_METRE = 27
 const MINIMUM_LENGTH_M = 20
 const PAYMENT_QUANTITY_M = 100
@@ -12,6 +12,18 @@ const CLEAN_PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 describe(`${CODE} @ ${VERSION}`, () => {
   beforeAll(async () => {
     await publishConfig({ code: CODE, semanticVersion: VERSION })
+  })
+
+  it('parcels offers the action', async () => {
+    const response = await apiClient.post('/api/v2/parcels', {
+      sbi: '123456789',
+      parcelIds: [`${CLEAN_PARCEL.sheetId}-${CLEAN_PARCEL.parcelId}`],
+      fields: ['actions']
+    })
+
+    expect(response.status).toBe(200)
+    const codes = response.body.parcels[0].actions.map((action) => action.code)
+    expect(codes).toContain(CODE)
   })
 
   it('payments/calculate pays the configured rate per metre', async () => {
@@ -41,7 +53,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-1',
+      applicationId: 'test-application-bnd1_26-1.1.0',
       requester: 'test-requester',
       applicantCrn: '1234567890',
       sbi: '123456789',
