@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.20.0
+
+### Minor Changes
+
+- 5f9f36a: Display BND1_26, maintain dry stone walls
+
 ## 0.19.0
 
 ### Minor Changes
