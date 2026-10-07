@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.22.0
+
+### Minor Changes
+
+- d4747e8: Add the applied-for-total-or-partial-available-length rule to BND1_26, maintain dry stone walls
+
 ## 0.21.0
 
 ### Minor Changes
