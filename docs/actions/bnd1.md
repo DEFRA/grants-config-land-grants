@@ -55,7 +55,7 @@ Annual payment: **£0.27** (27 pence) for 1 unit.
 Overall result: **not passed**.
 
 - `minimum-length` — failed
-  - Reason: Enter a value that is no less than the minimum length for this action 20 m
+  - Reason: The length must be at least 20 m
   - Minimum length: The minimum allowable length is (20 m), the available length was (3518 m) and the applicant applied for (1 m) The parcel boundary is (3518 m) and (0 m) is already committed to incompatible actions
 
 - `sssi-consent-required` — passed
@@ -79,7 +79,7 @@ Overall result: **not passed**.
     {
       "name": "minimum-length",
       "passed": false,
-      "reason": "Enter a value that is no less than the minimum length for this action 20 m",
+      "reason": "The length must be at least 20 m",
       "description": "Is the applied for length at least 20 m and no more than the available length?",
       "explanations": [
         {
