@@ -69,21 +69,17 @@ describe(`${CODE} @ ${VERSION}`, () => {
     expect(ruleNamed(response, 'minimum-length')).toEqual(
       expect.objectContaining({
         passed: false,
-        reason: `Enter a value that is no less than the minimum length for this action ${MINIMUM_LENGTH_M} m`
+        reason: `The length must be at least ${MINIMUM_LENGTH_M} m`
       })
     )
   })
 
-  it('application/validate fails a length above the available length', async () => {
+  // 1.0.0 has no available length rule; BND1_26 1.2.0 adds one
+  it('application/validate does not cap a length above the available length', async () => {
     const response = await validate(CLEAN_PARCEL, CLEAN_PARCEL_PERIMETER_M + 1)
 
     expect(response.status).toBe(200)
-    expect(ruleNamed(response, 'minimum-length')).toEqual(
-      expect.objectContaining({
-        passed: false,
-        reason: `Enter a value that is no more than the available length for this land parcel ${CLEAN_PARCEL_PERIMETER_M} m`
-      })
-    )
+    expect(rulesFor(response).every((r) => r.passed)).toBe(true)
   })
 
   it('application/validate passes the minimum length with no caveats on a clean parcel', async () => {
