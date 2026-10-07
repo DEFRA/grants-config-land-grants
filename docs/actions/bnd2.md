@@ -55,12 +55,12 @@ Annual payment: **£0.11** (11 pence) for 1 unit.
 
 Overall result: **not passed**.
 
-- `available-length` — failed
-  - Reason: Enter a value that is no less than the available length for this land parcel 23378 m
-  - Total available boundary length: The available boundary length was (23378 m) the applicant applied for (1 m)
+- `available-length` — passed
+  - Reason: The applied for length (1 m) is no more than the available length (23378 m)
+  - Total or partial available length: The available boundary length was (23378 m) the applicant applied for (1 m)
 
 - `minimum-length` — failed
-  - Reason: Enter a value that is no less than the minimum length for this action 20 m
+  - Reason: The length must be at least 20 m
   - Minimum length: The minimum allowable length is (20 m), the available length was (23378 m) and the applicant applied for (1 m) The parcel boundary is (23378 m) and (0 m) is already committed to incompatible actions
 
 - `hefer-consent-required` — passed
@@ -83,12 +83,12 @@ Overall result: **not passed**.
   "rules": [
     {
       "name": "available-length",
-      "passed": false,
-      "reason": "Enter a value that is no less than the available length for this land parcel 23378 m",
+      "passed": true,
+      "reason": "The applied for length (1 m) is no more than the available length (23378 m)",
       "description": "Does the parcel have the available length?",
       "explanations": [
         {
-          "title": "Total available boundary length",
+          "title": "Total or partial available length",
           "lines": [
             "The available boundary length was (23378 m) the applicant applied for (1 m)"
           ]
@@ -98,7 +98,7 @@ Overall result: **not passed**.
     {
       "name": "minimum-length",
       "passed": false,
-      "reason": "Enter a value that is no less than the minimum length for this action 20 m",
+      "reason": "The length must be at least 20 m",
       "description": "Is the applied-for length at least 20 m and no more than the available length?",
       "explanations": [
         {
