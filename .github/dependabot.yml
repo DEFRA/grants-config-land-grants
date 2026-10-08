@@ -27,6 +27,12 @@ updates:
           - 'vitest'
           - 'nodemon'
           - 'npm-run-all'
+      aws:
+        patterns:
+          - '@aws-sdk/*'
+      others:
+        patterns:
+          - '*'
     ignore:
       - dependency-name: 'eslint-*'
       - dependency-name: 'eslint'
