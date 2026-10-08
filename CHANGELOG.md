@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.23.0
+
+### Minor Changes
+
+- 69f0c01: set BND2 display false
+
 ## 0.22.0
 
 ### Minor Changes
