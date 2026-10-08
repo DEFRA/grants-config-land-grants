@@ -1,6 +1,8 @@
 import hapi from '@hapi/hapi'
 import { storeConfigVersionAndInformBroker } from '@defra/grants-config-utils'
 
+vi.mock('@defra/grants-config-utils')
+
 describe('#startServer', () => {
   let createServerSpy
   let hapiServerSpy
@@ -8,7 +10,6 @@ describe('#startServer', () => {
   let createServerImport
 
   beforeAll(async () => {
-    vi.mock('@defra/grants-config-utils')
     vi.stubEnv('PORT', '3098')
     createServerImport = await import('#/server.js')
     startServerImport = await import('./start-server.js')

@@ -25,6 +25,8 @@ updates:
         patterns:
           - 'husky'
           - 'vitest'
+          - '@vitest/*'
+          - 'vitest-*'
           - 'nodemon'
           - 'npm-run-all'
       aws:
@@ -34,8 +36,11 @@ updates:
         patterns:
           - '*'
     ignore:
-      - dependency-name: 'eslint-*'
+      # neostandard peer-depends on eslint 9.x; 10 is forced via package.json overrides
       - dependency-name: 'eslint'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'eslint-*'
+        update-types: ['version-update:semver-major']
     schedule:
       interval: weekly
       day: monday
