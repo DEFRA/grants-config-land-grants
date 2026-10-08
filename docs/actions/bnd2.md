@@ -2,7 +2,225 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/bnd2-maintain-earth-banks-or-stone-faced-hedgebanks)
 
-Configured in `configurations/land-grants/actions/BND2/`. 1 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions/BND2/`. 2 version(s) documented, newest first.
+
+## Version 1.1.0
+
+### Configuration
+
+| Field                   | Value                                          |
+| ----------------------- | ---------------------------------------------- |
+| Code                    | BND2                                           |
+| Description             | Maintain earth banks or stone-faced hedgebanks |
+| Semantic version        | 1.1.0                                          |
+| Enabled                 | Yes                                            |
+| Displayed to applicants | No                                             |
+| Unit of measurement     | m                                              |
+| Duration (years)        | 3                                              |
+| Start date              | 2026-10-18                                     |
+| Display order           | 0                                              |
+| Group ID                | —                                              |
+| Availability            | partial                                        |
+| Payment                 | £0.11 per m                                    |
+| Payment method          | default-calculation                            |
+
+See the [configuration reference](./configuration-reference.md) for what each field means.
+
+### Eligibility rules
+
+| Rule                     | Description                                                                    | Configuration                                           | Caveat message                             |
+| ------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------ |
+| `available-length`       | Does the parcel have the available length?                                     | —                                                       | —                                          |
+| `minimum-length`         | Is the applied-for length at least 20 m and no more than the available length? | `minimumLengthM`: 20                                    | —                                          |
+| `hefer-consent-required` | Does the parcel boundary intersect a historic or archaeological feature?       | `layerName`: historic_features<br>`tolerancePercent`: 0 | A hefer is needed from Historic England    |
+| `sssi-consent-required`  | Does the parcel boundary intersect a Site of Special Scientific Interest?      | `layerName`: sssi<br>`tolerancePercent`: 1              | A consent is required from Natural England |
+
+### Example output
+
+The parcel `SD5649-9215` was used to capture the responses below.
+
+**Payment** — `POST /api/v2/payments/calculate`
+
+Annual payment: **£0.11** (11 pence) for 1 unit.
+
+```json
+{
+  "code": "BND2",
+  "version": "1.1.0",
+  "annualPaymentPence": 11
+}
+```
+
+**Eligibility & explanations** — `POST /api/v2/application/validate`
+
+Overall result: **not passed**.
+
+- `available-length` — passed
+  - Reason: The applied for length (1 m) is no more than the available length (23378 m)
+  - Total or partial available length: The available boundary length was (23378 m) the applicant applied for (1 m)
+
+- `minimum-length` — failed
+  - Reason: The length must be at least 20 m
+  - Minimum length: The minimum allowable length is (20 m), the available length was (23378 m) and the applicant applied for (1 m) The parcel boundary is (23378 m) and (0 m) is already committed to incompatible actions
+
+- `hefer-consent-required` — passed
+  - Reason: No hefer is needed from Historic England
+  - historic_features check: This parcel has a 0% intersection with the historic_features layer. The tolerance is 0%.
+
+- `sssi-consent-required` — passed
+  - Reason: A consent is required from Natural England
+  - sssi check: This parcel has a 99.99% intersection with the sssi layer. The tolerance is 1%.
+  - Caveat: A consent is required from Natural England (`ne-consent-required`)
+
+<details><summary>Full <code>application/validate</code> action result</summary>
+
+```json
+{
+  "actionCode": "BND2",
+  "sheetId": "SD5649",
+  "parcelId": "9215",
+  "hasPassed": false,
+  "rules": [
+    {
+      "name": "available-length",
+      "passed": true,
+      "reason": "The applied for length (1 m) is no more than the available length (23378 m)",
+      "description": "Does the parcel have the available length?",
+      "explanations": [
+        {
+          "title": "Total or partial available length",
+          "lines": [
+            "The available boundary length was (23378 m) the applicant applied for (1 m)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "minimum-length",
+      "passed": false,
+      "reason": "The length must be at least 20 m",
+      "description": "Is the applied-for length at least 20 m and no more than the available length?",
+      "explanations": [
+        {
+          "title": "Minimum length",
+          "lines": [
+            "The minimum allowable length is (20 m), the available length was (23378 m) and the applicant applied for (1 m)",
+            "The parcel boundary is (23378 m) and (0 m) is already committed to incompatible actions"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hefer-consent-required",
+      "passed": true,
+      "reason": "No hefer is needed from Historic England",
+      "description": "Does the parcel boundary intersect a historic or archaeological feature?",
+      "explanations": [
+        {
+          "title": "historic_features check",
+          "lines": [
+            "This parcel has a 0% intersection with the historic_features layer. The tolerance is 0%."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sssi-consent-required",
+      "passed": true,
+      "reason": "A consent is required from Natural England",
+      "description": "Does the parcel boundary intersect a Site of Special Scientific Interest?",
+      "explanations": [
+        {
+          "title": "sssi check",
+          "lines": [
+            "This parcel has a 99.99% intersection with the sssi layer. The tolerance is 1%."
+          ]
+        }
+      ],
+      "caveat": {
+        "code": "ne-consent-required",
+        "description": "A consent is required from Natural England",
+        "metadata": {
+          "actionCode": "BND2",
+          "parcelId": "9215",
+          "sheetId": "SD5649",
+          "percentageOverlap": 99.99,
+          "overlapAreaHectares": 764.1672
+        }
+      }
+    }
+  ],
+  "version": "1.1.0"
+}
+```
+
+</details>
+
+<details><summary>Raw config JSON</summary>
+
+```json
+{
+  "applicationUnitOfMeasurement": "m",
+  "code": "BND2",
+  "description": "Maintain earth banks or stone-faced hedgebanks",
+  "display": false,
+  "displayOrder": 0,
+  "displayUnit": "meter",
+  "displayUnitPlural": "meters",
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/bnd2-maintain-earth-banks-or-stone-faced-hedgebanks",
+  "payment": {
+    "ratePerUnitGbp": 0.11
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 0.11
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "description": "Does the parcel have the available length?",
+      "name": "available-length"
+    },
+    {
+      "config": {
+        "minimumLengthM": 20
+      },
+      "description": "Is the applied-for length at least 20 m and no more than the available length?",
+      "name": "minimum-length"
+    },
+    {
+      "config": {
+        "caveatDescription": "A hefer is needed from Historic England",
+        "layerName": "historic_features",
+        "tolerancePercent": 0
+      },
+      "description": "Does the parcel boundary intersect a historic or archaeological feature?",
+      "name": "hefer-consent-required"
+    },
+    {
+      "name": "sssi-consent-required",
+      "config": {
+        "layerName": "sssi",
+        "tolerancePercent": 1,
+        "caveatDescription": "A consent is required from Natural England"
+      },
+      "description": "Does the parcel boundary intersect a Site of Special Scientific Interest?"
+    }
+  ],
+  "semanticVersion": "1.1.0",
+  "startDate": "2026-10-18",
+  "availability": {
+    "type": "partial"
+  }
+}
+```
+
+</details>
 
 ## Version 1.0.0
 
