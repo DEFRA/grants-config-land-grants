@@ -3,7 +3,7 @@
 Auto-generated reference for every land-grants action and config version.
 
 > Do not edit these files by hand — they are regenerated from
-> `configurations/land-grants/actions/` by `npm run docs:generate` and
+> `configurations/land-grants/actions_config/` by `npm run docs:generate` and
 > committed automatically on merge to `main`. See
 > [configuration-reference.md](./configuration-reference.md) for how to configure an action.
 

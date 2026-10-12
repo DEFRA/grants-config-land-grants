@@ -1,6 +1,6 @@
 # CMOR1 — Assess moorland and produce a written record
 
-Configured in `configurations/land-grants/actions/CMOR1/`. 3 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/CMOR1/`. 3 version(s) documented, newest first.
 
 ## Version 2.1.0
 

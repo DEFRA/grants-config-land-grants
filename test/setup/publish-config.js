@@ -37,13 +37,13 @@ export async function publishConfig({ code, semanticVersion }) {
     REPO_ROOT,
     'configurations',
     'land-grants',
-    'actions',
+    'actions_config',
     code,
     fileName
   )
   const body = await readFile(localPath, 'utf8')
 
-  const key = `land-grants/test/actions/${code}/${fileName}`
+  const key = `land-grants/test/actions_config/${code}/${fileName}`
 
   await s3.send(
     new PutObjectCommand({

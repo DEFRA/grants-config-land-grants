@@ -2,7 +2,7 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/scr2-manage-scrub-and-open-habitat-mosaics)
 
-Configured in `configurations/land-grants/actions/SCR2/`. 3 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/SCR2/`. 3 version(s) documented, newest first.
 
 ## Version 1.2.0
 

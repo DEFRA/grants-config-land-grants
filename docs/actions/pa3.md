@@ -1,6 +1,6 @@
 # PA3 — Woodland management plan
 
-Configured in `configurations/land-grants/actions/PA3/`. 2 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/PA3/`. 2 version(s) documented, newest first.
 
 ## Version 1.1.0
 

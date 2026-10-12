@@ -1,6 +1,6 @@
 # UPL10 — Shepherding livestock on moorland (remove stock for at least 8 months)
 
-Configured in `configurations/land-grants/actions/UPL10/`. 3 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/UPL10/`. 3 version(s) documented, newest first.
 
 ## Version 1.2.0
 

@@ -2,7 +2,7 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/bnd2-maintain-earth-banks-or-stone-faced-hedgebanks)
 
-Configured in `configurations/land-grants/actions/BND2/`. 2 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/BND2/`. 2 version(s) documented, newest first.
 
 ## Version 1.1.0
 

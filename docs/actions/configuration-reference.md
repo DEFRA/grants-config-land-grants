@@ -1,7 +1,7 @@
 # Action configuration reference
 
 Each land-grants action is defined by a JSON file at
-`configurations/land-grants/actions/<CODE>/<code>-<version>.json`. Files are
+`configurations/land-grants/actions_config/<CODE>/<code>-<version>.json`. Files are
 **immutable once published** — changes ship as a new `semanticVersion`. The
 land-grants-api validates each file against
 `src/features/grants-config/schema/action-config.schema.js` and additional
