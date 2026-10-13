@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.24.0
+
+### Minor Changes
+
+- 42b40ba: update BND2_26 config
+
 ## 0.23.0
 
 ### Minor Changes
