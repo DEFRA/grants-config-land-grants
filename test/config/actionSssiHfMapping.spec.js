@@ -1,4 +1,4 @@
-import { glob, readdir, readFile } from 'node:fs/promises'
+import { glob, readFile } from 'node:fs/promises'
 import { parse } from 'csv-parse/sync'
 
 const mappingFile =
@@ -97,10 +97,15 @@ describe('action sssi and historic features mapping', () => {
   })
 
   // A missing row silently defaults to eligible on SSSI and HF land, so every
-  // configured action must state its eligibility explicitly.
-  test('every configured action holds a row', async () => {
-    const configuredCodes = await readdir(actionsConfigDir)
+  // action config must state its eligibility explicitly. land-grants-api keys
+  // the action on the code inside the JSON, not the folder it sits in.
+  test('every action config has a row for its code', async () => {
+    const unmapped = []
+    for await (const file of glob(`${actionsConfigDir}/**/*.json`)) {
+      const { code } = JSON.parse(await readFile(file, 'utf8'))
+      if (!rowFor(code)) unmapped.push(`${code} (${file})`)
+    }
 
-    expect(configuredCodes.filter((code) => !rowFor(code))).toEqual([])
+    expect(unmapped).toEqual([])
   })
 })
