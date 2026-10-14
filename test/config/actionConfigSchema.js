@@ -5,13 +5,15 @@ const ruleConfigSchema = Joi.object({
   minimumIntersectionPercent: Joi.number(),
   maximumIntersectionPercent: Joi.number(),
   tolerancePercent: Joi.number(),
+  toleranceMeters: Joi.number(),
   caveatDescription: Joi.string(),
   minimumSize: Joi.number(),
   minOldWoodlandHa: Joi.number(),
   minimumParcelSizeSqm: Joi.number(),
   maximumParcelSizeSqm: Joi.number(),
-  minimumLengthM: Joi.number()
-}).unknown(true)
+  minimumLengthM: Joi.number(),
+  caveatCode: Joi.string()
+})
 
 const ruleSchema = Joi.object({
   name: Joi.string().required(),
