@@ -56,12 +56,12 @@ Annual payment: **£0.11** (11 pence) for 1 unit.
 Overall result: **not passed**.
 
 - `available-length` — passed
-  - Reason: The applied for length (1 m) is no more than the available length (undefined m)
-  - Total or partial available length: The available boundary length was (undefined m) the applicant applied for (1 m)
+  - Reason: The applied for length (1 m) is no more than the available length (23378 m)
+  - Total or partial available length: The available boundary length was (23378 m) the applicant applied for (1 m)
 
 - `minimum-length` — failed
   - Reason: The length must be at least 20 m
-  - Minimum length: The minimum allowable length is (20 m), the available length was (undefined m) and the applicant applied for (1 m)
+  - Minimum length: The minimum allowable length is (20 m), the available length was (23378 m) and the applicant applied for (1 m) The parcel boundary is (23378 m) and (0 m) is already committed to incompatible actions
 
 - `hefer-consent-required` — passed
   - Reason: No hefer is needed from Historic England
@@ -84,13 +84,13 @@ Overall result: **not passed**.
     {
       "name": "available-length",
       "passed": true,
-      "reason": "The applied for length (1 m) is no more than the available length (undefined m)",
+      "reason": "The applied for length (1 m) is no more than the available length (23378 m)",
       "description": "Does the parcel have the available length?",
       "explanations": [
         {
           "title": "Total or partial available length",
           "lines": [
-            "The available boundary length was (undefined m) the applicant applied for (1 m)"
+            "The available boundary length was (23378 m) the applicant applied for (1 m)"
           ]
         }
       ]
@@ -104,7 +104,8 @@ Overall result: **not passed**.
         {
           "title": "Minimum length",
           "lines": [
-            "The minimum allowable length is (20 m), the available length was (undefined m) and the applicant applied for (1 m)"
+            "The minimum allowable length is (20 m), the available length was (23378 m) and the applicant applied for (1 m)",
+            "The parcel boundary is (23378 m) and (0 m) is already committed to incompatible actions"
           ]
         }
       ]
@@ -273,12 +274,12 @@ Annual payment: **£0.11** (11 pence) for 1 unit.
 Overall result: **not passed**.
 
 - `available-length` — passed
-  - Reason: The applied for length (1 m) is no more than the available length (undefined m)
-  - Total or partial available length: The available boundary length was (undefined m) the applicant applied for (1 m)
+  - Reason: The applied for length (1 m) is no more than the available length (23378 m)
+  - Total or partial available length: The available boundary length was (23378 m) the applicant applied for (1 m)
 
 - `minimum-length` — failed
   - Reason: The length must be at least 20 m
-  - Minimum length: The minimum allowable length is (20 m), the available length was (undefined m) and the applicant applied for (1 m)
+  - Minimum length: The minimum allowable length is (20 m), the available length was (23378 m) and the applicant applied for (1 m) The parcel boundary is (23378 m) and (0 m) is already committed to incompatible actions
 
 - `hefer-consent-required` — passed
   - Reason: No hefer is needed from Historic England
@@ -301,13 +302,13 @@ Overall result: **not passed**.
     {
       "name": "available-length",
       "passed": true,
-      "reason": "The applied for length (1 m) is no more than the available length (undefined m)",
+      "reason": "The applied for length (1 m) is no more than the available length (23378 m)",
       "description": "Does the parcel have the available length?",
       "explanations": [
         {
           "title": "Total or partial available length",
           "lines": [
-            "The available boundary length was (undefined m) the applicant applied for (1 m)"
+            "The available boundary length was (23378 m) the applicant applied for (1 m)"
           ]
         }
       ]
@@ -321,7 +322,8 @@ Overall result: **not passed**.
         {
           "title": "Minimum length",
           "lines": [
-            "The minimum allowable length is (20 m), the available length was (undefined m) and the applicant applied for (1 m)"
+            "The minimum allowable length is (20 m), the available length was (23378 m) and the applicant applied for (1 m)",
+            "The parcel boundary is (23378 m) and (0 m) is already committed to incompatible actions"
           ]
         }
       ]

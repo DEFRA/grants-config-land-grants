@@ -56,15 +56,16 @@ Overall result: **not passed**.
 
 - `minimum-length` — failed
   - Reason: The length must be at least 20 m
-  - Minimum length: The minimum allowable length is (20 m), the available length was (undefined m) and the applicant applied for (1 m)
+  - Minimum length: The minimum allowable length is (20 m), the available length was (3518 m) and the applicant applied for (1 m) The parcel boundary is (3518 m) and (0 m) is already committed to incompatible actions
 
-- `sssi-consent-required` — failed
-  - Reason: A boundary intersection with the sssi layer was not provided in the application data
-  - sssi boundary check:
+- `sssi-consent-required` — passed
+  - Reason: A consent is required from Natural England
+  - sssi boundary check: The parcel boundary is (3518 m) and (897 m) of it is inside the sssi layer. The tolerance is (0 m).
+  - Caveat: A consent is required from Natural England (`ne-consent-required`)
 
-- `hefer-consent-required` — failed
-  - Reason: A boundary intersection with the historic_features layer was not provided in the application data
-  - historic_features boundary check:
+- `hefer-consent-required` — passed
+  - Reason: No consent is required for the historic_features layer
+  - historic_features boundary check: The parcel boundary is (3518 m) and (0 m) of it is inside the historic_features layer. The tolerance is (0 m).
 
 <details><summary>Full <code>application/validate</code> action result</summary>
 
@@ -84,32 +85,49 @@ Overall result: **not passed**.
         {
           "title": "Minimum length",
           "lines": [
-            "The minimum allowable length is (20 m), the available length was (undefined m) and the applicant applied for (1 m)"
+            "The minimum allowable length is (20 m), the available length was (3518 m) and the applicant applied for (1 m)",
+            "The parcel boundary is (3518 m) and (0 m) is already committed to incompatible actions"
           ]
         }
       ]
     },
     {
       "name": "sssi-consent-required",
-      "passed": false,
-      "reason": "A boundary intersection with the sssi layer was not provided in the application data",
+      "passed": true,
+      "reason": "A consent is required from Natural England",
       "description": "Does the parcel boundary intersect a site of special scientific interest?",
       "explanations": [
         {
           "title": "sssi boundary check",
-          "lines": []
+          "lines": [
+            "The parcel boundary is (3518 m) and (897 m) of it is inside the sssi layer. The tolerance is (0 m)."
+          ]
         }
-      ]
+      ],
+      "caveat": {
+        "code": "ne-consent-required",
+        "description": "A consent is required from Natural England",
+        "metadata": {
+          "actionCode": "BND1",
+          "parcelId": "7704",
+          "sheetId": "SD6855",
+          "percentageOverlap": 25.5,
+          "overlapLengthMeters": 897,
+          "boundaryLengthMeters": 3518
+        }
+      }
     },
     {
       "name": "hefer-consent-required",
-      "passed": false,
-      "reason": "A boundary intersection with the historic_features layer was not provided in the application data",
+      "passed": true,
+      "reason": "No consent is required for the historic_features layer",
       "description": "Does the parcel boundary intersect a historic or archaeological feature?",
       "explanations": [
         {
           "title": "historic_features boundary check",
-          "lines": []
+          "lines": [
+            "The parcel boundary is (3518 m) and (0 m) of it is inside the historic_features layer. The tolerance is (0 m)."
+          ]
         }
       ]
     }
