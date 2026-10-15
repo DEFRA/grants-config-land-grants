@@ -2,7 +2,7 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/cnum2-legumes-on-improved-grassland)
 
-Configured in `configurations/land-grants/actions/CNUM2/`. 4 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/CNUM2/`. 4 version(s) documented, newest first.
 
 ## Version 1.2.0
 

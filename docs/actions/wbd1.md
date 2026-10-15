@@ -2,7 +2,7 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/wbd1-manage-ponds)
 
-Configured in `configurations/land-grants/actions/WBD1/`. 4 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/WBD1/`. 4 version(s) documented, newest first.
 
 ## Version 1.3.0
 

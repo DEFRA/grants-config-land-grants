@@ -2,7 +2,7 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/csam3-herbal-leys)
 
-Configured in `configurations/land-grants/actions/CSAM3/`. 5 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/CSAM3/`. 5 version(s) documented, newest first.
 
 ## Version 1.4.0
 

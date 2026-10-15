@@ -2,7 +2,7 @@
 
 ## Why this exists
 
-`grants-config-land-grants` ships versioned JSON files (e.g. `configurations/land-grants/actions/UPL1/upl1-3.1.0.json`) that drive grant calculations in `land-grants-api`. Each version is immutable once shipped: an application signed against `upl1-3.1.0.json` today must keep validating correctly for its full lifespan, even after `4.0.0` and beyond exist alongside.
+`grants-config-land-grants` ships versioned JSON files (e.g. `configurations/land-grants/actions_config/UPL1/upl1-3.1.0.json`) that drive grant calculations in `land-grants-api`. Each version is immutable once shipped: an application signed against `upl1-3.1.0.json` today must keep validating correctly for its full lifespan, even after `4.0.0` and beyond exist alongside.
 
 The tests in this directory exercise every published version of every action against a real `land-grants-api` instance, so we can catch regressions in the API that would break old applications and catch config changes that don't behave as expected.
 
@@ -23,7 +23,7 @@ Specs are intentionally narrow — each one pushes only its own version and asse
 Locally we replicate that path against `floci` (LocalStack-equivalent) which is already wired into `land-grants-api/compose.yml`:
 
 ```
-test → PutObject configs-bucket/land-grants/test/actions/<CODE>/<file>.json
+test → PutObject configs-bucket/land-grants/test/actions_config/<CODE>/<file>.json
 test → SendMessage grants_config_broker_update
        { "grant": "land-grants", "status": "active", "manifest": [<key>] }
        ↓
@@ -115,7 +115,7 @@ docker pull defradigital/land-grants-postgres-seeded:latest
 
 ## Adding a test for a new config version
 
-1. Drop the new JSON into `configurations/land-grants/actions/<CODE>/<code>-<semver>.json`.
+1. Drop the new JSON into `configurations/land-grants/actions_config/<CODE>/<code>-<semver>.json`.
 2. Copy a sibling spec as a template, e.g. `cp test/specs/CLIG3/clig3-1.0.0.spec.js test/specs/CLIG3/clig3-1.1.0.spec.js`.
 3. Update `CODE`, `VERSION`, and any expected values that change with this version (rate, rule outcomes, etc.).
 4. Run `npm run test:configs` to confirm it passes.

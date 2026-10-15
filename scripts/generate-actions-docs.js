@@ -1,5 +1,5 @@
 // Generates browsable markdown documentation for every land-grants action
-// config version under configurations/land-grants/actions.
+// config version under configurations/land-grants/actions_config.
 //
 // For each version it renders:
 //   - the GOV.UK guidance link
@@ -32,7 +32,7 @@ const ACTIONS_DIR = path.join(
   REPO_ROOT,
   'configurations',
   'land-grants',
-  'actions'
+  'actions_config'
 )
 const OUT_DIR = path.join(REPO_ROOT, 'docs', 'actions')
 
@@ -311,7 +311,7 @@ function renderActionPage(action, capturesByVersion) {
     parts.push(`[Guidance on GOV.UK](${latest.guidanceUrl})`, '')
   }
   parts.push(
-    `Configured in \`configurations/land-grants/actions/${action.code}/\`. ${action.versions.length} version(s) documented, newest first.`,
+    `Configured in \`configurations/land-grants/actions_config/${action.code}/\`. ${action.versions.length} version(s) documented, newest first.`,
     ''
   )
 
@@ -330,7 +330,7 @@ function renderIndex(actions) {
     'Auto-generated reference for every land-grants action and config version.',
     '',
     '> Do not edit these files by hand — they are regenerated from',
-    '> `configurations/land-grants/actions/` by `npm run docs:generate` and',
+    '> `configurations/land-grants/actions_config/` by `npm run docs:generate` and',
     '> committed automatically on merge to `main`. See',
     '> [configuration-reference.md](./configuration-reference.md) for how to configure an action.',
     '',
@@ -353,7 +353,7 @@ function renderConfigurationReference() {
   return `# Action configuration reference
 
 Each land-grants action is defined by a JSON file at
-\`configurations/land-grants/actions/<CODE>/<code>-<version>.json\`. Files are
+\`configurations/land-grants/actions_config/<CODE>/<code>-<version>.json\`. Files are
 **immutable once published** — changes ship as a new \`semanticVersion\`. The
 land-grants-api validates each file against
 \`src/features/grants-config/schema/action-config.schema.js\` and additional

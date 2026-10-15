@@ -199,7 +199,7 @@ npm run test:smoke
 
 The first run pulls the published seeded Postgres image (`defradigital/land-grants-postgres-seeded:latest`) from Docker Hub; subsequent runs reuse the cached image. Set `LAND_GRANTS_API_DIR=/path/to/land-grants-api` if you want to point the stack at a local `land-grants-api` checkout instead of the upstream `compose.yml`.
 
-When you add a new config version under `configurations/land-grants/actions/<CODE>/`, add a sibling spec next to the existing ones for that action. Existing specs stay in place as the regression suite — they prove old configs still behave as their applications expect.
+When you add a new config version under `configurations/land-grants/actions_config/<CODE>/`, add a sibling spec next to the existing ones for that action. Existing specs stay in place as the regression suite — they prove old configs still behave as their applications expect.
 
 See [`test/TESTING.md`](./test/TESTING.md) for the full approach: why it's wired this way, how the SQS broker path works locally, authentication, debugging, and CI.
 

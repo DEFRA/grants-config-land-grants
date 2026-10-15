@@ -1,6 +1,6 @@
 # UPL3 — Limited livestock grazing on moorland
 
-Configured in `configurations/land-grants/actions/UPL3/`. 6 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/UPL3/`. 6 version(s) documented, newest first.
 
 ## Version 3.3.0
 

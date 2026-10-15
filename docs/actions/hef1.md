@@ -2,7 +2,7 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/hef1-maintain-weatherproof-traditional-farm-or-forestry-buildings)
 
-Configured in `configurations/land-grants/actions/HEF1/`. 4 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/HEF1/`. 4 version(s) documented, newest first.
 
 ## Version 1.3.0
 

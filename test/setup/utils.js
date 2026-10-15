@@ -1,7 +1,7 @@
 import { readdir, glob, readFile } from 'node:fs/promises'
 import path from 'node:path'
 
-const folderPath = 'configurations/land-grants/actions'
+const folderPath = 'configurations/land-grants/actions_config'
 
 export async function getActionConfig() {
   const files = []

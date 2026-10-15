@@ -2,7 +2,7 @@
 
 [Guidance on GOV.UK](https://www.gov.uk/find-funding-for-land-or-farms/clig3-manage-grassland-with-very-low-nutrient-inputs)
 
-Configured in `configurations/land-grants/actions/CLIG3_26/`. 1 version(s) documented, newest first.
+Configured in `configurations/land-grants/actions_config/CLIG3_26/`. 1 version(s) documented, newest first.
 
 ## Version 1.0.0
 
