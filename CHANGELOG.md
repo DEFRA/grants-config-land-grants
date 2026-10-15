@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.25.0
+
+### Minor Changes
+
+- 243f026: Move action configs to `actions_config/` and publish the action SSSI/HF eligibility mapping as `actions/actions_mapping.csv`, with an explicit row for every configured action. Requires the matching land-grants-api change before release as active.
+
 ## 0.24.0
 
 ### Minor Changes
