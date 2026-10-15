@@ -1,8 +1,7 @@
 import { glob, readFile } from 'node:fs/promises'
 import { parse } from 'csv-parse/sync'
 
-const mappingFile =
-  'configurations/land-grants/actions/action_sssi_hf_mapping.csv'
+const mappingFile = 'configurations/land-grants/actions/actions_mapping.csv'
 const actionsConfigDir = 'configurations/land-grants/actions_config'
 
 // land-grants-api loads this with Postgres COPY (FORMAT csv, HEADER true) into
@@ -17,7 +16,7 @@ const toRow = ([actionCode, sssiEligible, hfEligible]) => ({
 
 const legacyCodeFor = (actionCode) => actionCode.replace(/_26$/, '')
 
-describe('action sssi and historic features mapping', () => {
+describe('actions mapping', () => {
   let records
   let rows
 
