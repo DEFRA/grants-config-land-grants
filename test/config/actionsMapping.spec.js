@@ -2,6 +2,7 @@ import { glob, readFile } from 'node:fs/promises'
 import { parse } from 'csv-parse/sync'
 
 const mappingFile = 'configurations/land-grants/actions/actions_mapping.csv'
+const sidednessFile = 'configurations/land-grants/actions/actions_sidedness.csv'
 const actionsConfigDir = 'configurations/land-grants/actions_config'
 
 // land-grants-api loads this with Postgres COPY (FORMAT csv, HEADER true) into
@@ -29,13 +30,13 @@ describe('actions mapping', () => {
     rows = records.slice(1).map(toRow)
   })
 
-  test('is the only non-JSON file under configurations', async () => {
+  test('is one of the two actions CSVs, the only non-JSON files under configurations', async () => {
     const files = []
     for await (const file of glob('configurations/**/*.*')) {
       if (!file.endsWith('.json')) files.push(file)
     }
 
-    expect(files).toEqual([mappingFile])
+    expect(files.sort()).toEqual([mappingFile, sidednessFile])
   })
 
   test('has the expected header', () => {

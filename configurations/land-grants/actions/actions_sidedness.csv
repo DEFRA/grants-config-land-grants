@@ -1,0 +1,6 @@
+action_code,sidedness
+BND1,both-sides
+BND1_26,both-sides
+BND2,single-side
+BND2_26,single-side
+WBD2,both-sides
