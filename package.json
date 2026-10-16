@@ -27,6 +27,7 @@
     "test": "TZ=UTC vitest run --coverage",
     "test:watch": "TZ=UTC vitest",
     "test:configs": "vitest run --config test/vitest.config.js test/specs",
+    "test:schemas": "vitest run --config test/vitest.config.js test/config/actionSchema",
     "test:smoke": "./test/run-all-tests.sh",
     "test:unit": "vitest run --config test/vitest.config.js test/config",
     "github:release": "npx cdp-github-release grants-config-land-grants",
