@@ -29,10 +29,11 @@ describe('actions mapping', () => {
     rows = records.slice(1).map(toRow)
   })
 
-  test('is the only non-JSON file under configurations', async () => {
+  test('is the only non-JSON, non-schema file under configurations', async () => {
     const files = []
     for await (const file of glob('configurations/**/*.*')) {
-      if (!file.endsWith('.json')) files.push(file)
+      const isSchema = /(^|\/)schemas?(\/|\.js$)/.test(file)
+      if (!file.endsWith('.json') && !isSchema) files.push(file)
     }
 
     expect(files).toEqual([mappingFile])
