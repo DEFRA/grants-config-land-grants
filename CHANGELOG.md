@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.26.0
+
+### Minor Changes
+
+- 7588bed: Publish the sidedness of each linear action code (single-side or both-sides) as `actions/actions_sidedness.csv`. A land-grants-api without the matching change ignores the file, so this can be released before or after it.
+
 ## 0.25.0
 
 ### Minor Changes
