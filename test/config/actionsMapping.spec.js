@@ -30,10 +30,11 @@ describe('actions mapping', () => {
     rows = records.slice(1).map(toRow)
   })
 
-  test('is one of the two actions CSVs, the only non-JSON files under configurations', async () => {
+  test('is one of the two actions CSVs, the only non-JSON, non-schema files under configurations', async () => {
     const files = []
     for await (const file of glob('configurations/**/*.*')) {
-      if (!file.endsWith('.json')) files.push(file)
+      const isSchema = /(^|\/)schemas?(\/|\.js$)/.test(file)
+      if (!file.endsWith('.json') && !isSchema) files.push(file)
     }
 
     expect(files.sort()).toEqual([mappingFile, sidednessFile])

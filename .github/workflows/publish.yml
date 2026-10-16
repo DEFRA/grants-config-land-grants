@@ -8,6 +8,8 @@ on:
       - main
     paths:
       - 'configurations/**'
+      - '!configurations/land-grants/schemas/**'
+      - '!configurations/**/schema.js'
   workflow_dispatch:
     inputs:
       run_name:

@@ -2,3 +2,5 @@ node_modules
 Dockerfile
 coverage
 **/*.test.js
+configurations/land-grants/schemas
+configurations/**/schema.js
