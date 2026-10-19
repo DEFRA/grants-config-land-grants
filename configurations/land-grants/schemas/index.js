@@ -1,1 +1,5 @@
-export { areaActionSchema, linearActionSchema } from './action.js'
+export {
+  areaActionSchema,
+  countActionSchema,
+  linearActionSchema
+} from './action.js'
