@@ -1,6 +1,6 @@
-import { actionSchema } from '../../schemas/index.js'
+import { areaActionSchema } from '../../schemas/index.js'
 
-export default actionSchema('UPL10_26', [
+export default areaActionSchema('UPL10_26', [
   'parcel-has-intersection-with-data-layer',
   'applied-for-total-available-area',
   'sssi-consent-required',

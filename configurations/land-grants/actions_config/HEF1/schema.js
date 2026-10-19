@@ -1,6 +1,6 @@
-import { actionSchema } from '../../schemas/index.js'
+import { areaActionSchema } from '../../schemas/index.js'
 
-export default actionSchema('HEF1', [
+export default areaActionSchema('HEF1', [
   'hefer-consent-required',
   'building-check-required',
   'applied-for-total-or-partial-available-area'

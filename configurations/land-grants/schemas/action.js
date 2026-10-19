@@ -3,15 +3,13 @@ import { paymentMethodSchema, paymentSchema } from './paymentMethods.js'
 import { ruleSchema } from './rules.js'
 
 const baseAction = {
+  applicationUnitOfMeasurement: Joi.string().required(),
   description: Joi.string().required(),
   display: Joi.boolean().required(),
   displayOrder: Joi.number().integer().min(0).required(),
   durationYears: Joi.number().integer().min(1).required(),
   enabled: Joi.boolean().required(),
   groupId: Joi.number().integer().allow(null).required(),
-  applicationUnitOfMeasurement: Joi.string()
-    .valid('ha', 'm', 'sqm', 'count')
-    .required(),
   startDate: Joi.date().iso().required(),
   semanticVersion: Joi.string()
     .pattern(/^\d+\.\d+\.\d+$/)
@@ -27,9 +25,28 @@ const baseAction = {
   paymentMethod: paymentMethodSchema.required()
 }
 
-export const actionSchema = (code, ruleNames) =>
+const areaAction = {
+  ...baseAction,
+  applicationUnitOfMeasurement: Joi.string()
+    .valid('ha', 'sqm', 'count')
+    .required()
+}
+
+const linearAction = {
+  ...baseAction,
+  applicationUnitOfMeasurement: Joi.string().valid('m', 'count').required()
+}
+
+export const areaActionSchema = (code, ruleNames) =>
   Joi.object({
-    ...baseAction,
+    ...areaAction,
+    code: Joi.string().valid(code).required(),
+    rules: Joi.array().items(ruleSchema(ruleNames)).unique('name').required()
+  })
+
+export const linearActionSchema = (code, ruleNames) =>
+  Joi.object({
+    ...linearAction,
     code: Joi.string().valid(code).required(),
     rules: Joi.array().items(ruleSchema(ruleNames)).unique('name').required()
   })

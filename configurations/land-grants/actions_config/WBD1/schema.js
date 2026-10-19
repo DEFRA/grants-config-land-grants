@@ -1,6 +1,6 @@
-import { actionSchema } from '../../schemas/index.js'
+import { linearActionSchema } from '../../schemas/index.js'
 
-export default actionSchema('WBD1', [
+export default linearActionSchema('WBD1', [
   'hefer-consent-required',
   'pond-check-required',
   'parcel-has-valid-land-cover'

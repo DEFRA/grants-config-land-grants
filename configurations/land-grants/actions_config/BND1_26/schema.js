@@ -1,6 +1,6 @@
-import { actionSchema } from '../../schemas/index.js'
+import { linearActionSchema } from '../../schemas/index.js'
 
-export default actionSchema('BND1_26', [
+export default linearActionSchema('BND1_26', [
   'minimum-length',
   'sssi-consent-required',
   'hefer-consent-required',

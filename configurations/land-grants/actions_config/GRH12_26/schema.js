@@ -1,6 +1,6 @@
-import { actionSchema } from '../../schemas/index.js'
+import { areaActionSchema } from '../../schemas/index.js'
 
-export default actionSchema('GRH12_26', [
+export default areaActionSchema('GRH12_26', [
   'min-max-parcel-size',
   'parcel-has-intersection-with-data-layer',
   'sssi-consent-required',
