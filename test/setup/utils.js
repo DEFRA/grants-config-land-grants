@@ -51,3 +51,11 @@ export function parseVersion(filename) {
 export async function parseConfigFile(path) {
   return JSON.parse(await readFile(path, 'utf8'))
 }
+
+export async function loadAction(code, file) {
+  const { default: schema } = await import(
+    path.resolve(folderPath, code, 'schema.js')
+  )
+  const config = await parseConfigFile(path.join(folderPath, code, file))
+  return { schema, config }
+}

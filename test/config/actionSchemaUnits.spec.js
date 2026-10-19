@@ -1,17 +1,4 @@
-import { readFile } from 'node:fs/promises'
-import path from 'node:path'
-
-const actionsDir = 'configurations/land-grants/actions_config'
-
-const loadAction = async (code, file) => {
-  const { default: schema } = await import(
-    path.resolve(actionsDir, code, 'schema.js')
-  )
-  const config = JSON.parse(
-    await readFile(path.join(actionsDir, code, file), 'utf8')
-  )
-  return { schema, config }
-}
+import { loadAction } from '../setup/utils.js'
 
 const kinds = {
   area: {

@@ -4,19 +4,21 @@ const layerName = (...names) =>
   Joi.string()
     .valid(...names)
     .required()
-const tolerancePercent = Joi.number().required()
-const caveatDescription = Joi.string().required()
 
-const consentRequired = (layer) =>
+const areaConsentRequired = (layer) =>
   Joi.object({
     layerName: layerName(layer),
-    caveatDescription,
+    caveatDescription: Joi.string().required(),
     caveatCode: Joi.string(),
-    tolerancePercent: Joi.number(),
-    toleranceMeters: Joi.number()
-  }).xor('tolerancePercent', 'toleranceMeters')
+    tolerancePercent: Joi.number().required()
+  })
 
-const caveatCheck = Joi.object({ caveatDescription })
+const boundaryConsentRequired = Joi.object({
+  layerName: layerName('sssi', 'historic_features'),
+  caveatCode: Joi.string().required(),
+  caveatDescription: Joi.string().required(),
+  toleranceMeters: Joi.number()
+})
 
 export const ruleConfigs = {
   'applied-for-total-available-area': null,
@@ -25,10 +27,12 @@ export const ruleConfigs = {
   'available-length': null,
   'parcel-has-valid-land-cover': null,
   'total-area-not-exceed-land-parcels-woodland-management-plan': null,
-  'building-check-required': caveatCheck,
-  'pond-check-required': caveatCheck,
-  'sssi-consent-required': consentRequired('sssi'),
-  'hefer-consent-required': consentRequired('historic_features'),
+  'sssi-consent-required': areaConsentRequired('sssi'),
+  'hefer-consent-required': areaConsentRequired('historic_features'),
+  'boundary-intersection-consent-required': boundaryConsentRequired,
+  'manual-check-required': Joi.object({
+    caveatDescription: Joi.string().required()
+  }),
   'minimum-length': Joi.object({ minimumLengthM: Joi.number().required() }),
   'min-max-parcel-size': Joi.object({
     minimumParcelSizeSqm: Joi.number().required(),
@@ -36,12 +40,12 @@ export const ruleConfigs = {
   }),
   'parcel-has-intersection-with-data-layer': Joi.object({
     layerName: layerName('moorland', 'lfa'),
-    tolerancePercent,
+    tolerancePercent: Joi.number().required(),
     minimumIntersectionPercent: Joi.number().required()
   }),
   'parcel-intersection-does-not-exceed-maximum-for-data-layer': Joi.object({
     layerName: layerName('moorland'),
-    tolerancePercent,
+    tolerancePercent: Joi.number().required(),
     maximumIntersectionPercent: Joi.number().required()
   }),
   'parcel-has-minimum-eligibility-for-woodland-management-plan': Joi.object({
@@ -50,20 +54,32 @@ export const ruleConfigs = {
   })
 }
 
-const configFor = (config) => (config ? config.required() : Joi.forbidden())
+const ruleKeys = Object.keys(ruleConfigs)
+
+const configFor = (ruleKey) =>
+  ruleConfigs[ruleKey] ? ruleConfigs[ruleKey].required() : Joi.forbidden()
+
+const ruleConfig = (allowedNames) =>
+  Joi.when('type', {
+    switch: ruleKeys.map((type) => ({ is: type, then: configFor(type) })),
+    // Without a type the name is the rule key; names that only run through a type are skipped
+    otherwise: Joi.when('name', {
+      switch: allowedNames
+        .filter((name) => name in ruleConfigs)
+        .map((name) => ({ is: name, then: configFor(name) }))
+    })
+  })
 
 export const ruleSchema = (allowedNames) =>
   Joi.object({
     name: Joi.string()
       .valid(...allowedNames)
       .required(),
+    // A name that is not itself a rule key only runs through a type
+    type: Joi.string()
+      .valid(...ruleKeys)
+      .when('name', { not: Joi.valid(...ruleKeys), then: Joi.required() }),
     description: Joi.string().required(),
-    type: Joi.string(),
     version: Joi.string(),
-    config: Joi.when('name', {
-      switch: allowedNames.map((name) => ({
-        is: name,
-        then: configFor(ruleConfigs[name])
-      }))
-    })
+    config: ruleConfig(allowedNames)
   })

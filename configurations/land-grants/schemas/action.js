@@ -31,22 +31,22 @@ const unitOfMeasurement = (...units) =>
 
 const actionCode = (code) => Joi.string().valid(code).required()
 
-const actionRules = (ruleNames) =>
-  Joi.array().items(ruleSchema(ruleNames)).unique('name').required()
+const actionRules = (allowedNames) =>
+  Joi.array().items(ruleSchema(allowedNames)).unique('name').required()
 
-const actionSchema = ({ units, code, ruleNames }) =>
+const actionSchema = ({ units, code, allowedNames }) =>
   Joi.object({
     ...baseAction,
     applicationUnitOfMeasurement: unitOfMeasurement(...units),
     code: actionCode(code),
-    rules: actionRules(ruleNames)
+    rules: actionRules(allowedNames)
   })
 
-export const areaActionSchema = (code, ruleNames) =>
-  actionSchema({ units: ['ha', 'sqm'], code, ruleNames })
+export const areaActionSchema = (code, allowedNames) =>
+  actionSchema({ units: ['ha', 'sqm'], code, allowedNames })
 
-export const linearActionSchema = (code, ruleNames) =>
-  actionSchema({ units: ['m'], code, ruleNames })
+export const linearActionSchema = (code, allowedNames) =>
+  actionSchema({ units: ['m'], code, allowedNames })
 
-export const countActionSchema = (code, ruleNames) =>
-  actionSchema({ units: ['count'], code, ruleNames })
+export const countActionSchema = (code, allowedNames) =>
+  actionSchema({ units: ['count'], code, allowedNames })
