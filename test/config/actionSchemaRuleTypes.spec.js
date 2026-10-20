@@ -36,6 +36,30 @@ describe('action schema rule types', () => {
       '.config.caveatCode" is required'
     ],
     [
+      'a linear consent rule without the boundary type',
+      linearAction,
+      (c) => {
+        const rule = ruleNamed(c, 'sssi-consent-required')
+        delete rule.type
+        delete rule.config.toleranceMeters
+        delete rule.config.caveatCode
+        rule.config.tolerancePercent = 1
+      },
+      '.type" is required'
+    ],
+    [
+      'a linear consent rule run by the area consent rule',
+      linearAction,
+      (c) => {
+        const rule = ruleNamed(c, 'sssi-consent-required')
+        rule.type = 'sssi-consent-required'
+        delete rule.config.toleranceMeters
+        delete rule.config.caveatCode
+        rule.config.tolerancePercent = 1
+      },
+      '.type" must be [boundary-intersection-consent-required]'
+    ],
+    [
       'a rule type the rules engine does not know',
       linearAction,
       (c) => {

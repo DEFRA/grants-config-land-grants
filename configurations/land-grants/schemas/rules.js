@@ -70,16 +70,25 @@ const ruleConfig = (allowedNames) =>
     })
   })
 
-export const ruleSchema = (allowedNames) =>
+const ruleType = (requiredTypes) =>
+  Joi.string()
+    .valid(...ruleKeys)
+    // A name that is not itself a rule key only runs through a type
+    .when('name', { not: Joi.valid(...ruleKeys), then: Joi.required() })
+    .when('name', {
+      switch: Object.entries(requiredTypes).map(([name, type]) => ({
+        is: name,
+        then: Joi.valid(Joi.override, type).required()
+      }))
+    })
+
+export const ruleSchema = (allowedNames, requiredTypes = {}) =>
   Joi.object({
+    description: Joi.string().required(),
     name: Joi.string()
       .valid(...allowedNames)
       .required(),
-    // A name that is not itself a rule key only runs through a type
-    type: Joi.string()
-      .valid(...ruleKeys)
-      .when('name', { not: Joi.valid(...ruleKeys), then: Joi.required() }),
-    description: Joi.string().required(),
+    type: ruleType(requiredTypes),
     version: Joi.string(),
     config: ruleConfig(allowedNames)
   })

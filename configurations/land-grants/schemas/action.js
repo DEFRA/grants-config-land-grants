@@ -31,22 +31,35 @@ const unitOfMeasurement = (...units) =>
 
 const actionCode = (code) => Joi.string().valid(code).required()
 
-const actionRules = (allowedNames) =>
-  Joi.array().items(ruleSchema(allowedNames)).unique('name').required()
+const actionRules = (allowedNames, requiredTypes) =>
+  Joi.array()
+    .items(ruleSchema(allowedNames, requiredTypes))
+    .unique('name')
+    .required()
 
-const actionSchema = ({ units, code, allowedNames }) =>
+const actionSchema = ({ units, code, allowedNames, requiredTypes }) =>
   Joi.object({
     ...baseAction,
     applicationUnitOfMeasurement: unitOfMeasurement(...units),
     code: actionCode(code),
-    rules: actionRules(allowedNames)
+    rules: actionRules(allowedNames, requiredTypes)
   })
+
+const boundaryConsentTypes = {
+  'sssi-consent-required': 'boundary-intersection-consent-required',
+  'hefer-consent-required': 'boundary-intersection-consent-required'
+}
 
 export const areaActionSchema = (code, allowedNames) =>
   actionSchema({ units: ['ha', 'sqm'], code, allowedNames })
 
 export const linearActionSchema = (code, allowedNames) =>
-  actionSchema({ units: ['m'], code, allowedNames })
+  actionSchema({
+    units: ['m'],
+    code,
+    allowedNames,
+    requiredTypes: boundaryConsentTypes
+  })
 
 export const countActionSchema = (code, allowedNames) =>
   actionSchema({ units: ['count'], code, allowedNames })

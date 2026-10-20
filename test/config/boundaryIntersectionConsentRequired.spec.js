@@ -1,13 +1,23 @@
-import { getActionConfig } from '../setup/utils.js'
+import {
+  getActionConfig,
+  getLatestActionConfig,
+  isLinearAction
+} from '../setup/utils.js'
 
-const ruleName = 'boundary-intersection-consent-required'
+const boundaryRuleKey = 'boundary-intersection-consent-required'
+
+const consentRuleNames = ['sssi-consent-required', 'hefer-consent-required']
+
+const consentRules = (config) =>
+  config.rules.filter((rule) => consentRuleNames.includes(rule.name))
 
 const caveatCodeForLayer = {
   sssi: 'ne-consent-required',
   historic_features: 'hefer-consent-required'
 }
 
-const usesBoundaryIntersection = (rule) => (rule.type ?? rule.name) === ruleName
+const usesBoundaryIntersection = (rule) =>
+  (rule.type ?? rule.name) === boundaryRuleKey
 
 const actionsUsingBoundaryIntersection = (configFiles) =>
   configFiles.filter((config) => config.rules?.some(usesBoundaryIntersection))
@@ -63,6 +73,19 @@ describe('boundary intersection consent required', () => {
 
         expect(Number.isInteger(toleranceMeters)).toBe(true)
         expect(toleranceMeters).toBeGreaterThanOrEqual(0)
+      }
+    }
+  })
+
+  test('should be the type of every SSSI and HEFER consent rule in the latest version of a linear action', async () => {
+    const latestConfigs = await getLatestActionConfig()
+
+    for (const config of latestConfigs.filter(isLinearAction)) {
+      for (const rule of consentRules(config)) {
+        expect(
+          rule.type,
+          `${config.code} ${config.semanticVersion} ${rule.name}`
+        ).toEqual(boundaryRuleKey)
       }
     }
   })
