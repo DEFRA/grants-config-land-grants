@@ -42,6 +42,9 @@ export async function getLatestActionConfig() {
   return files
 }
 
+export const isLinearAction = (config) =>
+  config.applicationUnitOfMeasurement === 'm'
+
 export function parseVersion(filename) {
   const vpart = filename.split('-')[1]
   const [major, minor, patch] = vpart.split('.')
