@@ -42,6 +42,10 @@ export async function getLatestActionConfig() {
   return files
 }
 
+export function isLinearAction(config) {
+  return config.applicationUnitOfMeasurement === 'm'
+}
+
 export function parseVersion(filename) {
   const vpart = filename.split('-')[1]
   const [major, minor, patch] = vpart.split('.')
@@ -50,4 +54,12 @@ export function parseVersion(filename) {
 
 export async function parseConfigFile(path) {
   return JSON.parse(await readFile(path, 'utf8'))
+}
+
+export async function loadAction(code, file) {
+  const { default: schema } = await import(
+    path.resolve(folderPath, code, 'schema.js')
+  )
+  const config = await parseConfigFile(path.join(folderPath, code, file))
+  return { schema, config }
 }
