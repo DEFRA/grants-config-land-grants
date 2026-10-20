@@ -35,75 +35,7 @@ See the [configuration reference](./configuration-reference.md) for what each fi
 
 ### Example output
 
-The parcel `SD5649-9215` was used to capture the responses below.
-
-**Payment** — `POST /api/v2/payments/calculate`
-
-Annual payment: **£224.00** (22400 pence) for 1 unit.
-
-```json
-{
-  "code": "CSAM3_26",
-  "version": "1.0.0",
-  "annualPaymentPence": 22400
-}
-```
-
-**Eligibility & explanations** — `POST /api/v2/application/validate`
-
-Overall result: **not passed**.
-
-- `applied-for-total-or-partial-available-area` — passed
-  - Reason: The applied figure (1 ha) is within the allowed range (greater than 0 ha and up to 762.4624 ha)
-  - Total or partial available area: The available area is (762.4624 ha), and the applicant applied for (1 ha).
-
-- `parcel-intersection-does-not-exceed-maximum-for-data-layer-moorland` — failed
-  - Reason: This parcel exceeds the maximum allowed intersection with the moorland layer
-  - moorland check: This parcel has a 100% intersection with the moorland layer. The target is 10%.
-
-<details><summary>Full <code>application/validate</code> action result</summary>
-
-```json
-{
-  "actionCode": "CSAM3_26",
-  "sheetId": "SD5649",
-  "parcelId": "9215",
-  "hasPassed": false,
-  "rules": [
-    {
-      "name": "applied-for-total-or-partial-available-area",
-      "passed": true,
-      "reason": "The applied figure (1 ha) is within the allowed range (greater than 0 ha and up to 762.4624 ha)",
-      "description": "Has the total or partial available area been applied for?",
-      "explanations": [
-        {
-          "title": "Total or partial available area",
-          "lines": [
-            "The available area is (762.4624 ha), and the applicant applied for (1 ha)."
-          ]
-        }
-      ]
-    },
-    {
-      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer-moorland",
-      "passed": false,
-      "reason": "This parcel exceeds the maximum allowed intersection with the moorland layer",
-      "description": "The parcel should not be on the moorland",
-      "explanations": [
-        {
-          "title": "moorland check",
-          "lines": [
-            "This parcel has a 100% intersection with the moorland layer. The target is 10%."
-          ]
-        }
-      ]
-    }
-  ],
-  "version": "1.0.0"
-}
-```
-
-</details>
+> ⚠️ Example output unavailable for 1.0.0: failed to publish config: Timed out waiting for actions_config row code=CSAM3_26 version=1.0.0
 
 <details><summary>Raw config JSON</summary>
 
