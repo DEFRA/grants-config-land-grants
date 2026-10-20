@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-Land grant configuration lives in `configurations/land-grants/`. Action definitions are under `configurations/land-grants/actions_config/`. Action data files (e.g. `actions_mapping.csv`) are under `configurations/land-grants/actions/`. Service code and release helpers live in `src/` and `ci/`; test notes are in `test/`.
+Land grant configuration lives in `configurations/land-grants/`. Action definitions are under `configurations/land-grants/actions_config/`. Action data files (e.g. `actions_eligibility.csv`) are under `configurations/land-grants/actions/`. Service code and release helpers live in `src/` and `ci/`; test notes are in `test/`.
 
 ## Build, Test, and Development Commands
 

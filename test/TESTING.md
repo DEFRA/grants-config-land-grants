@@ -14,6 +14,8 @@ One spec file per `<action>/<version>` JSON, co-located in `test/specs/<CODE>/<c
 2. Waits until the API has ingested it (polls Postgres for the `actions_config` row).
 3. Calls the relevant REST endpoint(s) and asserts on the response.
 
+Before any spec runs, `npm run test:configs` publishes `actions/actions_eligibility.csv` once and waits until every code in it has an `actions` row. Only that file creates `actions` rows, and a config can only update a row that already exists.
+
 Specs are intentionally narrow — each one pushes only its own version and asserts on behaviour that depends on that version. When a new config version ships, a new spec ships alongside it. Old specs stay in the repo as the regression suite grows.
 
 ## How config reaches the API
@@ -70,8 +72,9 @@ test/
 ├── setup/
 │   ├── env.js                       # shared constants (URLs, creds, bucket, queue)
 │   ├── api-client.js                # supertest wrapper + AES-GCM bearer
+│   ├── publish-actions-eligibility.js # run by test:configs before the specs
 │   ├── publish-config.js            # S3 PutObject + SQS SendMessage + wait
-│   └── wait-for.js                  # poll actions_config row
+│   └── wait-for.js                  # poll actions_config or actions rows
 └── specs/
     └── CLIG3/
         └── clig3-1.0.0.spec.js
@@ -126,10 +129,11 @@ If the new version changes the _kind_ of behaviour exercised (e.g. introduces a 
 
 When a spec fails:
 
-1. **`publishConfig` timed out** — the API never ingested the config. Check `docker compose logs land-grants-backend` for ingest errors and `docker compose logs floci-init` to confirm the bucket/queue exist.
-2. **`401 Unauthorized`** — the token/key in `test/setup/env.js` no longer matches `test/compose.localoverride.yml`. Realign them.
-3. **Unexpected response shape** — the API contract may have changed. While the stack is up, hit the endpoint with `curl` and the encrypted bearer to inspect the full response.
-4. **Inspect ingested rows** — `psql -h localhost -U land_grants_api -d land_grants_api -c "SELECT code, major_version, minor_version, patch_version FROM actions_config;"` (password `land_grants_api`).
+1. **Timed out waiting for actions rows**: the API never applied `actions_eligibility.csv`, so no spec ran. Check `docker compose logs land-grants-backend` for ingest errors, and that the `land-grants-api` under test reads that file name.
+2. **`publishConfig` timed out** — the API never ingested the config. Check `docker compose logs land-grants-backend` for ingest errors and `docker compose logs floci-init` to confirm the bucket/queue exist.
+3. **`401 Unauthorized`** — the token/key in `test/setup/env.js` no longer matches `test/compose.localoverride.yml`. Realign them.
+4. **Unexpected response shape** — the API contract may have changed. While the stack is up, hit the endpoint with `curl` and the encrypted bearer to inspect the full response.
+5. **Inspect ingested rows** — `psql -h localhost -U land_grants_api -d land_grants_api -c "SELECT code, major_version, minor_version, patch_version FROM actions_config;"` (password `land_grants_api`).
 
 ## CI
 

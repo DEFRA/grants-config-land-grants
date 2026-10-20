@@ -11,7 +11,7 @@ import {
   CONFIGS_BUCKET,
   CONFIG_QUEUE_URL
 } from './env.js'
-import { waitForActionConfig } from './wait-for.js'
+import { waitForActionConfig, waitForActions } from './wait-for.js'
 
 const REPO_ROOT = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -67,4 +67,49 @@ export async function publishConfig({ code, semanticVersion }) {
   )
 
   await waitForActionConfig({ code, semanticVersion })
+}
+
+// Creates the actions rows that each published config then updates
+export async function publishActionsEligibility() {
+  const body = await readFile(
+    path.join(
+      REPO_ROOT,
+      'configurations',
+      'land-grants',
+      'actions',
+      'actions_eligibility.csv'
+    ),
+    'utf8'
+  )
+
+  const key = 'land-grants/test/actions/actions_eligibility.csv'
+
+  await s3.send(
+    new PutObjectCommand({
+      Bucket: CONFIGS_BUCKET,
+      Key: key,
+      Body: body,
+      ContentType: 'text/csv'
+    })
+  )
+
+  await sqs.send(
+    new SendMessageCommand({
+      QueueUrl: CONFIG_QUEUE_URL,
+      MessageBody: JSON.stringify([key]),
+      MessageAttributes: {
+        grant: { DataType: 'String', StringValue: 'land-grants' },
+        status: { DataType: 'String', StringValue: 'active' },
+        version: { DataType: 'String', StringValue: 'test' }
+      }
+    })
+  )
+
+  const codes = body
+    .trim()
+    .split('\n')
+    .slice(1)
+    .map((row) => row.split(',')[0])
+
+  await waitForActions(codes)
 }
