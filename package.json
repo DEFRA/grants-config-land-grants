@@ -26,7 +26,7 @@
     "start": "NODE_ENV=production node . --env-file-if-exists=.env",
     "test": "TZ=UTC vitest run --coverage",
     "test:watch": "TZ=UTC vitest",
-    "test:configs": "vitest run --config test/vitest.config.js test/specs",
+    "test:configs": "node test/setup/publish-actions-eligibility.js && vitest run --config test/vitest.config.js test/specs",
     "test:smoke": "./test/run-all-tests.sh",
     "test:unit": "vitest run --config test/vitest.config.js test/config",
     "github:release": "npx cdp-github-release grants-config-land-grants",
