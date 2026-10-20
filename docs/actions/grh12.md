@@ -39,11 +39,7 @@ See the [configuration reference](./configuration-reference.md) for what each fi
 
 ### Example output
 
-The parcel `SD5649-9215` was used to capture the responses below.
-
-_No payment example was returned for this parcel._
-
-_No validation example was returned for this parcel._
+> ⚠️ Example output unavailable for 1.0.0: failed to publish config: Timed out waiting for actions_config row code=GRH12 version=1.0.0
 
 <details><summary>Raw config JSON</summary>
 
