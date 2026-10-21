@@ -1,27 +1,6 @@
 import Joi from 'joi'
 
-const ruleConfigSchema = Joi.object({
-  layerName: Joi.string(),
-  minimumIntersectionPercent: Joi.number(),
-  maximumIntersectionPercent: Joi.number(),
-  tolerancePercent: Joi.number(),
-  toleranceMeters: Joi.number(),
-  caveatDescription: Joi.string(),
-  minimumSize: Joi.number(),
-  minOldWoodlandHa: Joi.number(),
-  minimumParcelSizeSqm: Joi.number(),
-  maximumParcelSizeSqm: Joi.number(),
-  minimumLengthM: Joi.number(),
-  caveatCode: Joi.string()
-})
-
-const ruleSchema = Joi.object({
-  name: Joi.string().required(),
-  description: Joi.string(),
-  type: Joi.string(),
-  version: Joi.string(),
-  config: ruleConfigSchema
-})
+import { ruleSchema } from '@defra/land-grants-rule-schemas'
 
 const paymentSchema = Joi.object({
   ratePerUnitGbp: Joi.number(),
