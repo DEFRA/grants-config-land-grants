@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.28.0
+
+### Minor Changes
+
+- 7d96db6: update the docker image version
+
 ## 0.27.0
 
 ### Minor Changes
