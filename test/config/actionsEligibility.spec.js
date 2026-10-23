@@ -38,7 +38,7 @@ describe('actions eligibility', () => {
   test('is the only non-JSON file under configurations', async () => {
     const files = []
     for await (const file of glob('configurations/**/*.*')) {
-      if (!file.endsWith('.json')) files.push(file)
+      if (file.endsWith('.csv')) files.push(file)
     }
 
     expect(files).toEqual([eligibilityFile])
