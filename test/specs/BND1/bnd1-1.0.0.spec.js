@@ -46,7 +46,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
   // inverts: the action appears with sssiConsentRequired true on this parcel.
   it('parcels does not offer the action while it is not displayed', async () => {
     const response = await apiClient.post('/api/v2/parcels', {
-      sbi: '123456789',
+      sbi: '800000999',
       parcelIds: [
         `${SSSI_BOUNDARY_PARCEL.sheetId}-${SSSI_BOUNDARY_PARCEL.parcelId}`
       ],
