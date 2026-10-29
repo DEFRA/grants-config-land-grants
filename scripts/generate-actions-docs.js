@@ -166,7 +166,7 @@ async function captureExamples({ code, version }) {
 
   try {
     const parcelsResp = await apiClient.post('/api/v2/parcels', {
-      sbi: '123456789',
+      sbi: '800000099',
       parcelIds: [parcelId],
       fields: ['actions']
     })
@@ -199,8 +199,8 @@ async function captureExamples({ code, version }) {
     const validateResp = await apiClient.post('/api/v2/application/validate', {
       applicationId: `docs-gen-${code}-${version}`,
       requester: 'docs-generator',
-      applicantCrn: '1234567890',
-      sbi: '123456789',
+      applicantCrn: '9000000099',
+      sbi: '800000099',
       landActions: [{ ...parcel, actions: [action] }]
     })
     const matched = (validateResp.body?.actions ?? []).find(
