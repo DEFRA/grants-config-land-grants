@@ -15,8 +15,8 @@ const validate = (quantity) =>
   apiClient.post('/api/v2/application/validate', {
     applicationId: 'test-application-bnd1_26-1.2.0',
     requester: 'test-requester',
-    applicantCrn: '1234567890',
-    sbi: '123456789',
+    applicantCrn: '9000000099',
+    sbi: '800000099',
     landActions: [
       {
         ...CLEAN_PARCEL,
@@ -37,7 +37,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('parcels offers the action', async () => {
     const response = await apiClient.post('/api/v2/parcels', {
-      sbi: '123456789',
+      sbi: '800000099',
       parcelIds: [`${CLEAN_PARCEL.sheetId}-${CLEAN_PARCEL.parcelId}`],
       fields: ['actions']
     })

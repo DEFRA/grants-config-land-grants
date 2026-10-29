@@ -15,8 +15,8 @@ describe(`${CODE} @ ${VERSION}`, () => {
     const response = await apiClient.post('/api/v2/application/validate', {
       applicationId: 'test-application-hef1_26-1.1.0-pass',
       requester: 'test-requester',
-      applicantCrn: '1234567890',
-      sbi: '123456789',
+      applicantCrn: '9000000099',
+      sbi: '800000999',
       landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
     })
 
@@ -44,8 +44,8 @@ describe(`${CODE} @ ${VERSION}`, () => {
     const response = await apiClient.post('/api/v2/application/validate', {
       applicationId: 'test-application-hef1_26-1.1.0-fail',
       requester: 'test-requester',
-      applicantCrn: '1234567890',
-      sbi: '123456789',
+      applicantCrn: '9000000099',
+      sbi: '800000999',
       landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1000000 }] }]
     })
 

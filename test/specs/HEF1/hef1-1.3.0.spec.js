@@ -21,7 +21,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('parcels offers the _26 replacement instead of the legacy action', async () => {
     const response = await apiClient.post('/api/v2/parcels', {
-      sbi: '123456789',
+      sbi: '800000999',
       parcelIds: [`${PARCEL.sheetId}-${PARCEL.parcelId}`],
       fields: ['actions']
     })
@@ -62,8 +62,8 @@ describe(`${CODE} @ ${VERSION}`, () => {
     const response = await apiClient.post('/api/v2/application/validate', {
       applicationId: 'test-application-hef1-1.3.0',
       requester: 'test-requester',
-      applicantCrn: '1234567890',
-      sbi: '123456789',
+      applicantCrn: '9000000099',
+      sbi: '800000999',
       landActions: [
         { ...PARCEL, actions: [{ code: CODE, quantity: 1, version: VERSION }] }
       ]
