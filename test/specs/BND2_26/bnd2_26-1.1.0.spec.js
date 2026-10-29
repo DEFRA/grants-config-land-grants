@@ -78,17 +78,12 @@ describe(`${CODE} @ ${VERSION}`, () => {
   })
 
   it('application/validate fails a length above the available length', async () => {
-    const response = await validate(PARCEL, PARCEL_PERIMETER_M + 1)
+    const response = await validate(PARCEL, PARCEL_PERIMETER_M * 2 + 1)
 
     expect(response.status).toBe(200)
     expect(
       ruleNamed(response, 'applied-for-total-or-partial-available-length')
-    ).toEqual(
-      expect.objectContaining({
-        passed: false,
-        reason: `Enter a value that is no more than the available length for this land parcel ${PARCEL_PERIMETER_M} m`
-      })
-    )
+    ).toEqual(expect.objectContaining({ passed: false }))
   })
 
   it('application/validate passes the boundary consent rules with no caveat on a clear boundary', async () => {

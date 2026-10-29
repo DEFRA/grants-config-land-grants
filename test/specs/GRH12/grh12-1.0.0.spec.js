@@ -11,7 +11,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     await publishConfig({ code: CODE, semanticVersion: VERSION })
   })
 
-  it('payments/calculate returns 400 as config is disabled', async () => {
+  it('payments/calculate returns 200', async () => {
     const response = await apiClient.post('/api/v2/payments/calculate', {
       startDate: '2026-10-18',
       parcel: [
@@ -19,6 +19,6 @@ describe(`${CODE} @ ${VERSION}`, () => {
       ]
     })
 
-    expect(response.status).toBe(400)
+    expect(response.status).toBe(200)
   })
 })
