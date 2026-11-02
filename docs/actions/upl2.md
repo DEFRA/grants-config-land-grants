@@ -58,8 +58,8 @@ Overall result: **not passed**.
   - moorland check: This parcel has a 100% intersection with the moorland layer. The target is 49%.
 
 - `applied-for-total-available-area` — failed
-  - Reason: There is not sufficient available area (0 ha) for the applied figure (1 ha)
-  - Total valid land cover: The available area was (0 ha) the applicant applied for (1 ha)
+  - Reason: There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)
+  - Total valid land cover: The available area was (1.8905 ha) the applicant applied for (1 ha)
 
 - `sssi-consent-required` — passed
   - Reason: No consent is required from Natural England
@@ -95,13 +95,13 @@ Overall result: **not passed**.
     {
       "name": "applied-for-total-available-area",
       "passed": false,
-      "reason": "There is not sufficient available area (0 ha) for the applied figure (1 ha)",
+      "reason": "There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)",
       "description": "Has the total available area been applied for?",
       "explanations": [
         {
           "title": "Total valid land cover",
           "lines": [
-            "The available area was (0 ha) the applicant applied for (1 ha)"
+            "The available area was (1.8905 ha) the applicant applied for (1 ha)"
           ]
         }
       ]
@@ -262,8 +262,8 @@ Overall result: **not passed**.
   - moorland check: This parcel has a 100% intersection with the moorland layer. The target is 49%.
 
 - `applied-for-total-available-area` — failed
-  - Reason: There is not sufficient available area (0 ha) for the applied figure (1 ha)
-  - Total valid land cover: The available area was (0 ha) the applicant applied for (1 ha)
+  - Reason: There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)
+  - Total valid land cover: The available area was (1.8905 ha) the applicant applied for (1 ha)
 
 - `sssi-consent-required` — passed
   - Reason: No consent is required from Natural England
@@ -299,13 +299,13 @@ Overall result: **not passed**.
     {
       "name": "applied-for-total-available-area",
       "passed": false,
-      "reason": "There is not sufficient available area (0 ha) for the applied figure (1 ha)",
+      "reason": "There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)",
       "description": "Has the total available area been applied for?",
       "explanations": [
         {
           "title": "Total valid land cover",
           "lines": [
-            "The available area was (0 ha) the applicant applied for (1 ha)"
+            "The available area was (1.8905 ha) the applicant applied for (1 ha)"
           ]
         }
       ]
@@ -466,8 +466,8 @@ Overall result: **not passed**.
   - moorland check: This parcel has a 100% intersection with the moorland layer. The target is 49%.
 
 - `applied-for-total-available-area` — failed
-  - Reason: There is not sufficient available area (0 ha) for the applied figure (1 ha)
-  - Total valid land cover: The available area was (0 ha) the applicant applied for (1 ha)
+  - Reason: There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)
+  - Total valid land cover: The available area was (1.8905 ha) the applicant applied for (1 ha)
 
 - `sssi-consent-required` — passed
   - Reason: No consent is required from Natural England
@@ -503,13 +503,13 @@ Overall result: **not passed**.
     {
       "name": "applied-for-total-available-area",
       "passed": false,
-      "reason": "There is not sufficient available area (0 ha) for the applied figure (1 ha)",
+      "reason": "There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)",
       "description": "Has the total available area been applied for?",
       "explanations": [
         {
           "title": "Total valid land cover",
           "lines": [
-            "The available area was (0 ha) the applicant applied for (1 ha)"
+            "The available area was (1.8905 ha) the applicant applied for (1 ha)"
           ]
         }
       ]
@@ -667,8 +667,8 @@ Overall result: **not passed**.
   - moorland check: This parcel has a 100% intersection with the moorland layer. The target is 49%.
 
 - `applied-for-total-available-area` — failed
-  - Reason: There is not sufficient available area (0 ha) for the applied figure (1 ha)
-  - Total valid land cover: The available area was (0 ha) the applicant applied for (1 ha)
+  - Reason: There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)
+  - Total valid land cover: The available area was (1.8905 ha) the applicant applied for (1 ha)
 
 - `sssi-consent-required` — passed
   - Reason: No consent is required from Natural England
@@ -704,13 +704,13 @@ Overall result: **not passed**.
     {
       "name": "applied-for-total-available-area",
       "passed": false,
-      "reason": "There is not sufficient available area (0 ha) for the applied figure (1 ha)",
+      "reason": "There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)",
       "description": "Has the total available area been applied for?",
       "explanations": [
         {
           "title": "Total valid land cover",
           "lines": [
-            "The available area was (0 ha) the applicant applied for (1 ha)"
+            "The available area was (1.8905 ha) the applicant applied for (1 ha)"
           ]
         }
       ]
@@ -866,8 +866,8 @@ Overall result: **not passed**.
   - moorland check: This parcel has a 100% intersection with the moorland layer. The target is 49%.
 
 - `applied-for-total-available-area` — failed
-  - Reason: There is not sufficient available area (0 ha) for the applied figure (1 ha)
-  - Total valid land cover: The available area was (0 ha) the applicant applied for (1 ha)
+  - Reason: There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)
+  - Total valid land cover: The available area was (1.8905 ha) the applicant applied for (1 ha)
 
 - `sssi-consent-required` — passed
   - Reason: No consent is required from Natural England
@@ -899,13 +899,13 @@ Overall result: **not passed**.
     {
       "name": "applied-for-total-available-area",
       "passed": false,
-      "reason": "There is not sufficient available area (0 ha) for the applied figure (1 ha)",
+      "reason": "There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)",
       "description": "Has the total available area been applied for?",
       "explanations": [
         {
           "title": "Total valid land cover",
           "lines": [
-            "The available area was (0 ha) the applicant applied for (1 ha)"
+            "The available area was (1.8905 ha) the applicant applied for (1 ha)"
           ]
         }
       ]
@@ -1040,8 +1040,8 @@ Overall result: **not passed**.
   - moorland check: This parcel has a 100% intersection with the moorland layer. The target is 49%.
 
 - `applied-for-total-available-area` — failed
-  - Reason: There is not sufficient available area (0 ha) for the applied figure (1 ha)
-  - Total valid land cover: The available area was (0 ha) the applicant applied for (1 ha)
+  - Reason: There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)
+  - Total valid land cover: The available area was (1.8905 ha) the applicant applied for (1 ha)
 
 <details><summary>Full <code>application/validate</code> action result</summary>
 
@@ -1069,13 +1069,13 @@ Overall result: **not passed**.
     {
       "name": "applied-for-total-available-area",
       "passed": false,
-      "reason": "There is not sufficient available area (0 ha) for the applied figure (1 ha)",
+      "reason": "There is not sufficient available area (1.8905 ha) for the applied figure (1 ha)",
       "description": "Has the total available area been applied for?",
       "explanations": [
         {
           "title": "Total valid land cover",
           "lines": [
-            "The available area was (0 ha) the applicant applied for (1 ha)"
+            "The available area was (1.8905 ha) the applicant applied for (1 ha)"
           ]
         }
       ]
