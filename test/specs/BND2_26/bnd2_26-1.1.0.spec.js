@@ -19,8 +19,8 @@ const validate = (parcel, quantity) =>
   apiClient.post('/api/v2/application/validate', {
     applicationId: 'test-application-bnd2_26-1.1.0',
     requester: 'test-requester',
-    applicantCrn: '1234567890',
-    sbi: '123456789',
+    applicantCrn: '9000000099',
+    sbi: '800000999',
     landActions: [
       { ...parcel, actions: [{ code: CODE, quantity, version: VERSION }] }
     ]
