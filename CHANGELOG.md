@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.30.0
+
+### Minor Changes
+
+- ae1a3ff: Add GRH12_26 1.2.0 with the description corrected to "Manage rough grassland for upland breeding waders"
+
 ## 0.29.0
 
 ### Minor Changes
