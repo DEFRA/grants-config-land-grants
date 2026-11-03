@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.30.1
+
+### Patch Changes
+
+- f81cb0c: update test data sbis and crn
+
 ## 0.30.0
 
 ### Minor Changes
