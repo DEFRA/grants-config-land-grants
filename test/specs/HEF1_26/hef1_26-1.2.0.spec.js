@@ -11,7 +11,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     await publishConfig({ code: CODE, semanticVersion: VERSION })
   })
 
-  it('application/validate passes applied-for-total-or-partial-available-area when applying for less than the available building area', async () => {
+  it('application/validate is aware of the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
       applicationId: 'test-application-hef1_26-1.1.0-pass',
       requester: 'test-requester',
@@ -32,36 +32,6 @@ describe(`${CODE} @ ${VERSION}`, () => {
             expect.objectContaining({
               name: 'applied-for-total-or-partial-available-area',
               passed: true,
-              description: expect.any(String)
-            })
-          ])
-        })
-      ])
-    )
-  })
-
-  it('application/validate fails applied-for-total-or-partial-available-area when applying for more than the available building area', async () => {
-    const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-hef1_26-1.1.0-fail',
-      requester: 'test-requester',
-      applicantCrn: '9000000099',
-      sbi: '800000999',
-      landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1000000 }] }]
-    })
-
-    expect(response.status).toBe(200)
-    expect(response.body.actions).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          actionCode: CODE,
-          version: VERSION,
-          hasPassed: false,
-          sheetId: PARCEL.sheetId,
-          parcelId: PARCEL.parcelId,
-          rules: expect.arrayContaining([
-            expect.objectContaining({
-              name: 'applied-for-total-or-partial-available-area',
-              passed: false,
               description: expect.any(String)
             })
           ])

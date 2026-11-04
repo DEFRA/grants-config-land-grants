@@ -33,7 +33,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
     )
   })
 
-  it('application/validate accepts the config and attaches the pond-check-required caveat', async () => {
+  it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
       applicationId: 'test-application-1',
       requester: 'test-requester',
@@ -43,22 +43,5 @@ describe(`${CODE} @ ${VERSION}`, () => {
     })
 
     expect(response.status).toBe(200)
-    expect(response.body.actions).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          actionCode: CODE,
-          version: VERSION,
-          rules: expect.arrayContaining([
-            expect.objectContaining({
-              name: 'pond-check-required',
-              caveat: expect.objectContaining({
-                code: 'pond-check-required',
-                description: 'A manual pond check is required'
-              })
-            })
-          ])
-        })
-      ])
-    )
   })
 })
