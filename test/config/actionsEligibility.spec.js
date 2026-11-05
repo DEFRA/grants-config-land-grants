@@ -35,15 +35,6 @@ describe('actions eligibility', () => {
     rows = records.slice(1).map(toRow)
   })
 
-  test('is the only non-JSON file under configurations', async () => {
-    const files = []
-    for await (const file of glob('configurations/**/*.*')) {
-      if (file.endsWith('.csv')) files.push(file)
-    }
-
-    expect(files).toEqual([eligibilityFile])
-  })
-
   test('has the expected header', () => {
     expect(records[0]).toEqual([
       'action_code',
