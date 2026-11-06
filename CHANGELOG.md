@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.31.0
+
+### Minor Changes
+
+- a334e35: add compat matrix with type and supplemental compat matrix
+
 ## 0.30.1
 
 ### Patch Changes
