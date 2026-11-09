@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'BND2_26'
-const VERSION = '1.1.0'
+const VERSION = '1.1.1'
 const RATE_PENCE_M = 11
 
 // Perimeters and intersections are integer metres from the seeded image
