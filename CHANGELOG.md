@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.32.1
+
+### Patch Changes
+
+- baceb46: Fix spelling of metres in BND2_26 displayUnit(Plural)
+
 ## 0.32.0
 
 ### Minor Changes
