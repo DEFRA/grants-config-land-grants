@@ -1,0 +1,63 @@
+{
+  "applicationUnitOfMeasurement": "m",
+  "availability": {
+    "type": "partial"
+  },
+  "code": "CHRW2_26",
+  "description": "Manage hedgerows",
+  "display": true,
+  "displayOrder": 0,
+  "displayUnit": "metre",
+  "displayUnitPlural": "metres",
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/chrw2-manage-hedgerows",
+  "payment": {
+    "ratePerUnitGbp": 0.13
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 0.13
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "config": {
+        "minimumLengthM": 20
+      },
+      "description": "Is the applied for length at least 20 m?",
+      "name": "minimum-length"
+    },
+    {
+      "description": "Is the applied for length no more than the available length?",
+      "name": "applied-for-total-or-partial-available-length"
+    },
+    {
+      "config": {
+        "caveatCode": "ne-consent-required",
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "toleranceMeters": 0
+      },
+      "description": "Does the parcel boundary intersect a site of special scientific interest?",
+      "name": "sssi-consent-required",
+      "type": "boundary-intersection-consent-required"
+    },
+    {
+      "config": {
+        "caveatCode": "hefer-consent-required",
+        "caveatDescription": "A HEFER is needed from Historic England",
+        "layerName": "historic_features",
+        "toleranceMeters": 0
+      },
+      "description": "Does the parcel boundary intersect a historic or archaeological feature?",
+      "name": "hefer-consent-required",
+      "type": "boundary-intersection-consent-required"
+    }
+  ],
+  "semanticVersion": "1.0.0",
+  "startDate": "2026-10-18"
+}
