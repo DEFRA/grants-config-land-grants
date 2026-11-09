@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.32.0
+
+### Minor Changes
+
+- 1b9b7bd: Add CHRW2 hedgerows action
+
 ## 0.31.0
 
 ### Minor Changes
