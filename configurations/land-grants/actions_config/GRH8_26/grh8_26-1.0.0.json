@@ -24,6 +24,25 @@
   "rules": [
     {
       "config": {
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "tolerancePercent": 1
+      },
+      "description": "Is the site of special scientific interest?",
+      "name": "sssi-consent-required",
+      "version": "1.0.0"
+    },
+    {
+      "config": {
+        "caveatDescription": "A hefer is needed from Historic England",
+        "layerName": "historic_features",
+        "tolerancePercent": 0
+      },
+      "description": "Does the site require a Historic Environment Farm Environment Record?",
+      "name": "hefer-consent-required"
+    },
+    {
+      "config": {
         "layerName": "moorland",
         "maximumIntersectionPercent": 0,
         "tolerancePercent": 10
