@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-import { ruleSchema } from '@defra/land-grants-rule-schemas'
+import { ruleSchema } from '@defra/land-grants-schemas'
 
 const paymentSchema = Joi.object({
   ratePerUnitGbp: Joi.number(),
