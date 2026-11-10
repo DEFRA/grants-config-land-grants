@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.33.0
+
+### Minor Changes
+
+- dc2e168: Add GRH7 supplemental haymaking action
+
 ## 0.32.1
 
 ### Patch Changes
