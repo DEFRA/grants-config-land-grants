@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.34.0
+
+### Minor Changes
+
+- 24edf0d: add GRH8 config
+
 ## 0.33.0
 
 ### Minor Changes
