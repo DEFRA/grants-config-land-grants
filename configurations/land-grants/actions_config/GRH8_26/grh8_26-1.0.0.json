@@ -1,0 +1,60 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "availability": {
+    "type": "partial"
+  },
+  "code": "GRH8_26",
+  "description": "Haymaking supplement (late cut)",
+  "display": true,
+  "displayOrder": 0,
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/grh8-haymaking-supplement-late-cut",
+  "payment": {
+    "ratePerUnitGbp": 187
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 187
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "config": {
+        "caveatDescription": "A consent is required from Natural England",
+        "layerName": "sssi",
+        "tolerancePercent": 1
+      },
+      "description": "Is the site of special scientific interest?",
+      "name": "sssi-consent-required",
+      "version": "1.0.0"
+    },
+    {
+      "config": {
+        "caveatDescription": "A hefer is needed from Historic England",
+        "layerName": "historic_features",
+        "tolerancePercent": 0
+      },
+      "description": "Does the site require a Historic Environment Farm Environment Record?",
+      "name": "hefer-consent-required"
+    },
+    {
+      "config": {
+        "layerName": "moorland",
+        "maximumIntersectionPercent": 0,
+        "tolerancePercent": 10
+      },
+      "description": "The parcel should not be on the moorland",
+      "name": "parcel-intersection-does-not-exceed-maximum-for-data-layer"
+    },
+    {
+      "description": "Has the total or partial available area been applied for?",
+      "name": "applied-for-total-or-partial-available-area"
+    }
+  ],
+  "semanticVersion": "1.0.0",
+  "startDate": "2026-10-18"
+}
