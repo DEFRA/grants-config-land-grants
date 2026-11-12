@@ -12,7 +12,6 @@ ENV PORT=${PORT}
 EXPOSE ${PORT} ${PORT_DEBUG}
 
 COPY --chown=node:node --chmod=755 package*.json ./
-COPY --chown=node:node --chmod=755 ./vendor ./vendor
 RUN npm install
 COPY --chown=node:node --chmod=755 ./src ./src
 COPY --chown=node:node --chmod=755 ./configurations ./configurations
