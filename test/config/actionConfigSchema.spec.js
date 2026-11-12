@@ -1,5 +1,5 @@
 import { glob, readFile } from 'node:fs/promises'
-import { actionConfigSchema } from './actionConfigSchema.js'
+import { validateActionConfig } from '@defra/land-grants-schemas'
 
 async function getConfigFiles() {
   const files = []
@@ -22,9 +22,7 @@ describe('action config schema', () => {
 
   test('every action config file matches the schema', () => {
     for (const { file, config } of configFiles) {
-      const { error } = actionConfigSchema.validate(config, {
-        abortEarly: false
-      })
+      const { error } = validateActionConfig(config)
       expect(error, `${file}: ${error?.message}`).toBeUndefined()
     }
   })
