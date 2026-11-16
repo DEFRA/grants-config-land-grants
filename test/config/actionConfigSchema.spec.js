@@ -1,5 +1,5 @@
 import { glob, readFile } from 'node:fs/promises'
-import { validateActionConfig } from '@defra/land-grants-schemas'
+import { validateActionConfig } from '@defra/land-grants-rules-schemas'
 
 async function getConfigFiles() {
   const files = []
