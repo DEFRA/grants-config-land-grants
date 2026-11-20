@@ -1,46 +1,26 @@
 version: 2
 
 updates:
-
   # Update npm packages
   - package-ecosystem: npm
     directory: /
     open-pull-requests-limit: 10
     cooldown:
       default-days: 7
-    # Group packages into a shared PR
+    # Separate production and development dependency updates into their own PRs
     groups:
-      lint:
-        patterns:
-          - 'prettier'
-          - 'stylelint'
-          - 'stylelint-*'
-      logging:
-        patterns:
-          - '*-pino'
-          - '*-pino-format'
-          - 'pino'
-          - 'pino-*'
-      tools:
-        patterns:
-          - 'husky'
-          - 'vitest'
-          - '@vitest/*'
-          - 'vitest-*'
-          - 'nodemon'
-          - 'npm-run-all'
-      aws:
-        patterns:
-          - '@aws-sdk/*'
-      others:
-        patterns:
-          - '*'
+      production-dependencies:
+        dependency-type: production
+      development-dependencies:
+        dependency-type: development
     ignore:
       # neostandard peer-depends on eslint 9.x; 10 is forced via package.json overrides
       - dependency-name: 'eslint'
         update-types: ['version-update:semver-major']
       - dependency-name: 'eslint-*'
         update-types: ['version-update:semver-major']
+    labels:
+      - 'dependencies'
     schedule:
       interval: weekly
       day: monday
@@ -54,6 +34,15 @@ updates:
   # Update GitHub Actions
   - package-ecosystem: github-actions
     directory: /
+    cooldown:
+      default-days: 7
+    # Group all GitHub Actions bumps into a single PR
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+    labels:
+      - 'dependencies'
     schedule:
       interval: weekly
       day: monday
@@ -63,6 +52,10 @@ updates:
   # Update Docker
   - package-ecosystem: docker
     directory: /
+    cooldown:
+      default-days: 7
+    labels:
+      - 'dependencies'
     schedule:
       interval: weekly
       day: monday
