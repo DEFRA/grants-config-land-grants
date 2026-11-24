@@ -9,6 +9,7 @@ Core delivery platform Node.js Backend Template.
   - [Hotfix releases](#hotfix-releases)
 - [Requirements](#requirements)
   - [Node.js](#nodejs)
+  - [Betterleaks](#betterleaks)
 - [Local development](#local-development)
   - [Setup](#setup)
   - [Development](#development)
@@ -151,6 +152,24 @@ cd grants-config-land-grants
 nvm use
 ```
 
+### Betterleaks
+
+[Betterleaks](https://github.com/betterleaks/betterleaks) must be on your `PATH`, because the pre-commit hook uses it to stop secrets being committed - on macOS:
+
+```bash
+brew install betterleaks
+```
+
+For other platforms, see the [betterleaks releases page](https://github.com/betterleaks/betterleaks/releases).
+
+npm does not run install scripts in this repository, so the git hooks are not installed by `npm install`. Install them once after cloning:
+
+```bash
+npm run setup:husky
+```
+
+If a finding is a genuine false positive, add a `// betterleaks:allow` comment to the end of that line.
+
 ## Local development
 
 ### Setup
@@ -166,7 +185,7 @@ npm install
 Install git hooks (optional)
 
 ```bash
-npm run git:hooks
+npm run setup:husky
 ```
 
 ### Development
