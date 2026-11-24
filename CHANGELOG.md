@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.35.0
+
+### Minor Changes
+
+- bf51819: add isSupplementalOnly flag to supplementary actions
+
 ## 0.34.0
 
 ### Minor Changes
