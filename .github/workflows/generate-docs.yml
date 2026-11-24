@@ -32,13 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #7.0.1
+        uses: actions/checkout@v7.0.1
         # Latest main, not the triggering commit, so a queued run includes the docs the last one merged
         with:
           ref: main
 
       - name: Setup Node
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 #7.1.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -65,7 +65,7 @@ jobs:
       # main's ruleset rejects direct pushes, so merge through a PR as publish.yml does for releases
       - name: Commit docs, then open, check and merge the pull request
         if: steps.docs.outputs.branch != ''
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #9.0.0
+        uses: actions/github-script@v9.0.0
         env:
           DOCS_BRANCH: ${{ steps.docs.outputs.branch }}
           HEAD_SHA: ${{ steps.docs.outputs.head_sha }}

@@ -42,12 +42,12 @@ jobs:
           echo "✅ Valid hotfix branch"
 
       - name: Check out code
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #7.0.1
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
       - name: Test code and Create Test Coverage Reports
-        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 #7.1.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -141,7 +141,7 @@ jobs:
 
       - name: Create Release PR or GitHub Release
         id: changesets
-        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 #v2.1.2
+        uses: changesets/action@v2.1.2
         with:
           publish-script: npm run github:release
           commit-message: ${{ env.RELEASE_MSG }}
@@ -149,7 +149,7 @@ jobs:
 
       - name: Trigger required checks on release PR, then merge to hotfix branch, deploy to CDP and delete release branch
         if: ${{ !startsWith(inputs.description, 'Create new hotfix config version') }}
-        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 #9.0.0
+        uses: actions/github-script@v9.0.0
         with:
           script: |
             const prNumber = Number("${{ steps.changesets.outputs.pr-number }}");
@@ -214,7 +214,7 @@ jobs:
             });
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@59202af334b4ba7b5db01b701b8e79f8b3bef0f4 #8.5.0
+        uses: SonarSource/sonarqube-scan-action@v8.5.0
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
