@@ -1,0 +1,33 @@
+{
+  "applicationUnitOfMeasurement": "ha",
+  "availability": {
+    "type": "partial"
+  },
+  "code": "GRH10_26",
+  "description": "Lenient grazing supplement",
+  "display": true,
+  "displayOrder": 0,
+  "durationYears": 3,
+  "enabled": true,
+  "groupId": null,
+  "guidanceUrl": "https://www.gov.uk/find-funding-for-land-or-farms/grh10-lenient-grazing-supplement",
+  "isSupplementalOnly": true,
+  "payment": {
+    "ratePerUnitGbp": 28
+  },
+  "paymentMethod": {
+    "config": {
+      "ratePerUnitGbp": 28
+    },
+    "name": "default-calculation",
+    "version": "1.0.0"
+  },
+  "rules": [
+    {
+      "description": "Has the total or partial available area been applied for?",
+      "name": "applied-for-total-or-partial-available-area"
+    }
+  ],
+  "semanticVersion": "1.0.0",
+  "startDate": "2026-10-18"
+}
