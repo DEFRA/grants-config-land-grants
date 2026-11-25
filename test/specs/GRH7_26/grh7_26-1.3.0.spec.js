@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'GRH7_26'
-const VERSION = '1.2.0'
+const VERSION = '1.3.0'
 const RATE_PENCE_PER_HA = 15700
 const PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 
@@ -32,7 +32,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-grh7_26-1.2.0',
+      applicationId: 'test-application-grh7_26-1.3.0',
       requester: 'test-requester',
       applicantCrn: '9000000099',
       sbi: '800000999',
