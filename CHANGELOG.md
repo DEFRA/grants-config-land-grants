@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.36.0
+
+### Minor Changes
+
+- 8573a80: update PA3 config v1.2.0
+
 ## 0.35.0
 
 ### Minor Changes
