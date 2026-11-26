@@ -3,7 +3,7 @@ import { publishConfig } from '../../setup/publish-config.js'
 import { apiClient } from '../../setup/api-client.js'
 
 const CODE = 'GRH8_26'
-const VERSION = '1.1.0'
+const VERSION = '1.2.0'
 const RATE_PENCE_PER_HA = 18700
 const PARCEL = { sheetId: 'SD6743', parcelId: '8083' }
 
@@ -32,10 +32,10 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application',
+      applicationId: 'test-application-grh8_26-1.2.0',
       requester: 'test-requester',
-      applicantCrn: '1234567890',
-      sbi: '123456789',
+      applicantCrn: '9000000099',
+      sbi: '800000999',
       landActions: [{ ...PARCEL, actions: [{ code: CODE, quantity: 1 }] }]
     })
 

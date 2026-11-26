@@ -4,19 +4,19 @@
 
 `grants-config-land-grants` ships versioned JSON files (e.g. `configurations/land-grants/actions_config/UPL1/upl1-3.1.0.json`) that drive grant calculations in `land-grants-api`. Each version is immutable once shipped: an application signed against `upl1-3.1.0.json` today must keep validating correctly for its full lifespan, even after `4.0.0` and beyond exist alongside.
 
-The tests in this directory exercise every published version of every action against a real `land-grants-api` instance, so we can catch regressions in the API that would break old applications and catch config changes that don't behave as expected.
+The tests in this directory check that the latest version of each action's config is ingested by a real `land-grants-api` instance and served back by its endpoints. They do not test rule behaviour, which belongs in `land-grants-api`.
 
 ## What "a test" means here
 
-One spec file per `<action>/<version>` JSON, co-located in `test/specs/<CODE>/<code>-<version>.spec.js`. A spec:
+One spec file per action, for its latest version, in `test/specs/<CODE>/<code>-<version>.spec.js`. A spec:
 
 1. Publishes its single config file to the API through the same S3 + SQS path the production grants-config broker uses.
 2. Waits until the API has ingested it (polls Postgres for the `actions_config` row).
-3. Calls the relevant REST endpoint(s) and asserts on the response.
+3. Calls the relevant REST endpoint(s) and asserts that the API reports that version.
 
 Before any spec runs, `npm run test:configs` publishes `actions/actions_eligibility.csv` once and waits until every code in it has an `actions` row. Only that file creates `actions` rows, and a config can only update a row that already exists.
 
-Specs are intentionally narrow — each one pushes only its own version and asserts on behaviour that depends on that version. When a new config version ships, a new spec ships alongside it. Old specs stay in the repo as the regression suite grows.
+Specs are intentionally narrow: each one pushes only its own version and checks it was ingested. Don't add assertions on rule outcomes, caveats or the absence of a rule. When a new config version ships, the existing spec is renamed and updated to it, and older versions are left without a spec.
 
 ## How config reaches the API
 
@@ -116,14 +116,14 @@ The image is multi-hundred-megabyte; pull it once if you want the first `test:sm
 docker pull defradigital/land-grants-postgres-seeded:latest
 ```
 
-## Adding a test for a new config version
+## Updating the spec for a new config version
 
 1. Drop the new JSON into `configurations/land-grants/actions_config/<CODE>/<code>-<semver>.json`.
-2. Copy a sibling spec as a template, e.g. `cp test/specs/CLIG3/clig3-1.0.0.spec.js test/specs/CLIG3/clig3-1.1.0.spec.js`.
-3. Update `CODE`, `VERSION`, and any expected values that change with this version (rate, rule outcomes, etc.).
+2. Rename the action's existing spec to the new version, e.g. `git mv test/specs/CLIG3/clig3-1.2.0.spec.js test/specs/CLIG3/clig3-1.3.0.spec.js`. For a new action, copy any sibling spec and update `CODE`.
+3. Update `VERSION`, and the expected rate if it changed. Give each `application/validate` call an `applicationId` that names the action and version, because the API pins an application to the config versions used in its first validation run.
 4. Run `npm run test:configs` to confirm it passes.
 
-If the new version changes the _kind_ of behaviour exercised (e.g. introduces a new rule), add a fresh `it(...)` block. Existing specs for older versions should stay untouched — they prove backward compatibility.
+Don't add an `it(...)` block for a new rule or a changed rule outcome, even when the new version changes behaviour. Rule behaviour is tested in `land-grants-api`, and this suite only proves the config is ingested.
 
 ## Debugging a failure
 
@@ -141,6 +141,4 @@ When a spec fails:
 
 ## Known gaps / follow-ups
 
-- **PA3** uses tiered WMP pricing, not a flat rate. Its specs currently only verify the config ingests; flesh out WMP-endpoint assertions when those scenarios are pulled in from `land-grants-api-tests`.
-- **CSV-driven scenarios** from `land-grants-api-tests/test/data/` haven't been wired in yet. The publish/auth/wait plumbing is ready for them — drop CSV files under `test/data/<CODE>/` and import the existing helpers (`csvReader`, `paymentsHelper`, etc.) from `land-grants-api-tests`.
 - **Git-remote compose** falls back to `LAND_GRANTS_API_DIR` until `land-grants-api/compose.yml` is reliably consumable via `https://github.com/...#main:compose.yml`.
