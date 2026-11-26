@@ -6,7 +6,7 @@ import { apiClient } from '../../setup/api-client.js'
 // available-area calculation) and 47d8fc59 (generic manual-check-required rule)
 
 const CODE = 'WBD1_26'
-const VERSION = '1.0.0'
+const VERSION = '1.0.1'
 const RATE_PENCE_PER_COUNT = 25700
 const PARCEL = { sheetId: 'SD5649', parcelId: '9215' }
 
@@ -35,7 +35,7 @@ describe(`${CODE} @ ${VERSION}`, () => {
 
   it('application/validate accepts the config', async () => {
     const response = await apiClient.post('/api/v2/application/validate', {
-      applicationId: 'test-application-1',
+      applicationId: 'test-application-wbd1_26-1.0.1',
       requester: 'test-requester',
       applicantCrn: '9000000099',
       sbi: '800000999',
