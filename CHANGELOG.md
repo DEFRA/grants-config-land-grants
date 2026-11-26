@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.37.0
+
+### Minor Changes
+
+- 125c1ae: remove SSSI, HEFER and moorland rules from the GRH7_26 and GRH8_26 supplements, which take that eligibility from their base action
+
 ## 0.36.0
 
 ### Minor Changes
