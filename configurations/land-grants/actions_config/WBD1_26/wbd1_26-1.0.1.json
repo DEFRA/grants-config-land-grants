@@ -31,7 +31,7 @@
       "name": "hefer-consent-required"
     },
     {
-      "description": "Does the land parcel have compatible land covers?",
+      "description": "Does the land parcel have ponds?",
       "name": "parcel-has-valid-land-cover"
     },
     {

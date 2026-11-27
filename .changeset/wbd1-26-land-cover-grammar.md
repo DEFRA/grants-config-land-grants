@@ -2,4 +2,4 @@
 'grants-config-land-grants': patch
 ---
 
-Fix grammar of the land cover rule description in WBD1_26
+Reword the WBD1_26 land cover rule description to ask about ponds
