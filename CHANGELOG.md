@@ -1,5 +1,11 @@
 # grants-config-land-grants
 
+## 0.37.1
+
+### Patch Changes
+
+- 9d1320e: Reword the WBD1_26 land cover rule description to ask about ponds
+
 ## 0.37.0
 
 ### Minor Changes
